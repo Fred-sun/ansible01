@@ -1,0 +1,12 @@
+K [create virtual machine] **************************************************
+changed: [127.0.0.1]
+
+TASK [Power off the machine] ***************************************************
+changed: [127.0.0.1]
+
+TASK [Increase disk size] ******************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Error creating the managed disk: Azure Error: BadRequest\nMessage: Disks or snapshot cannot be resized down."}
+	to retry, use: --limit @/home/fred/task/azure_rm_virtualmachine_NSG01.retry
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=10   changed=3    unreachable=0    failed=1   
