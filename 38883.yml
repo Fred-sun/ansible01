@@ -1,0 +1,28 @@
+- name: "Create VM"
+  azure_rm_virtualmachine:
+    resource_group: "{{ resource_group_name }}"
+    virtual_network_name: "{{ virtual_network_name }}"
+    network_interface_names: "{{ network_interface_name }}"
+    storage_account_name: "{{ storage_account_name }}"
+    name: "{{vm_name}}"
+    vm_size: "{{ vm_size_sku }}"
+    image:
+      offer: "{{ os_image_offer }}"
+      sku: "{{ os_image_sku }}"
+      publisher: "{{ os_image_publisher }}"
+      version: "{{ os_image_version }}"
+    managed_disk_type: Standard_LRS
+    started: no
+
+- name: "Power off the machine"
+  azure_rm_virtualmachine:
+    resource_group: "{{ resource_group_name }}"
+    name: "{{vm_name}}"
+    allocated: no
+
+- name: "Increase disk size"
+  azure_rm_managed_disk:
+    name: "{{ vm_name }}"
+    resource_group: "{{ resource_group_name }}"
+    disk_size_gb: "{{ azure_disk_size }}"
+    managed_by: "{{ vm_name }}"
