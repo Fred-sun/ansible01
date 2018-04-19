@@ -1,0 +1,22 @@
+- name: Create Azure VM
+  hosts: control01
+  tasks:
+  - name: Create VM
+    azure_rm_virtualmachine:
+      resource_group: myrg
+      name: '{{ item }}'
+      vm_size: Standard_DS1_v2
+      admin_username: centos
+      ssh_password_enabled: false
+      ssh_public_keys: 
+        - path: /home/centos/.ssh/authorized_keys
+          key_data: "ssh-rsa {clipped}"
+      image:
+        offer: CentOS
+        publisher: Rogue Wave Software (formerly OpenLogic)
+        sku: '7.4'
+        version: latest
+    with_items:
+      - zk01
+      - zk02
+      - zk03
