@@ -1,0 +1,118 @@
+---
+- name: Create loadbalance and VMSS machine
+  hosts: localhost
+  connection: local
+  vars:
+    resource_group: myLBRG02
+    vm_name: testvm
+    location: eastus
+  tasks:
+  - name: Create a resource group
+    azure_rm_resourcegroup:
+      name: "{{ resource_group }}"
+      location: "{{ location }}"
+
+  - name: Create virtual network
+    azure_rm_virtualnetwork:
+      resource_group: "{{ resource_group }}"
+      name: "{{ vm_name }}"
+      address_prefixes: "10.0.0.0/16"
+
+  - name: Add subnet
+    azure_rm_subnet:
+      resource_group: "{{ resource_group }}"
+      name: "{{ vm_name }}"
+      address_prefix: "10.0.1.0/24"
+      virtual_network: "{{ vm_name }}"
+
+  - name: Create public IP address
+    azure_rm_publicipaddress:
+      resource_group: "{{ resource_group }}"
+      allocation_method: Static
+      name: "{{ vm_name }}"
+
+#  - name: Create public IP address
+#    azure_rm_publicipaddress:
+#      resource_group: "{{ resource_group }}"
+#      allocation_method: Static
+#      name: testvm01
+
+#  - name: Create Network Security Group that allows SSH
+#    azure_rm_securitygroup:
+#      resource_group: "{{ resource_group }}"
+#      name: "{{ vm_name }}"
+#      rules:
+#        - name: SSH
+#          protocol: Tcp
+#          destination_port_range: 22
+#          access: Allow
+#          priority: 1001
+#          direction: Inbound
+
+#  - name: Create virtual network inteface card
+#    azure_rm_networkinterface:
+#      resource_group: "{{ resource_group }}"
+#      name: "{{ vm_name }}"
+#      virtual_network: "{{ vm_name }}"
+#      subnet: "{{ vm_name }}"
+#      public_ip_name: "{{ vm_name }}"
+#      security_group: "{{ vm_name }}"
+
+  - name: Create a load balancer
+    azure_rm_loadbalancer:
+      name: myloadbalancer
+      location: eastus
+      resource_group: "{{ resource_group }}"
+      public_ip_address_name: "{{ vm_name }}"
+      probe_protocol: Tcp
+      probe_port: 80
+      probe_interval: 10
+      probe_fail_count: 3
+      protocol: Tcp
+      load_distribution: Default
+      frontend_port: 80
+      backend_port: 8080
+      idle_timeout: 4
+      natpool_frontend_port_start: 1030
+      natpool_frontend_port_end: 1040
+      natpool_backend_port: 80
+      natpool_protocol: Tcp
+
+  - name: Create VMSS
+    azure_rm_virtualmachine_scaleset:
+      resource_group: "{{ resource_group }}"
+      name: testvmss
+      vm_size: Standard_DS1_v2
+      capacity: 2
+      load_balancer: myloadbalancer
+      upgrade_policy: Automatic
+      tier: Standard
+      virtual_network_name: "{{ vm_name }}"
+      subnet_name: "{{ vm_name }}"
+      admin_username: azureuser
+      admin_password: Password@123
+      managed_disk_type: Standard_LRS
+      image:
+        offer: CoreOS
+        publisher: CoreOS
+        sku: Stable
+        version: latest
+      data_disks:
+        - lun: 0
+          disk_size_gb: 64
+          caching: ReadWrite
+          managed_disk_type: Standard_LRS
+
+#  - name: Create VM
+#    azure_rm_virtualmachine:
+#      resource_group: "{{ resource_group }}"
+#      name: "{{ vm_name }}"
+#      vm_size: Standard_DS1_v2
+#      admin_username: azureuser
+#      admin_password: Password@123
+##      network_interfaces: "{{ vm_name }}"
+#      image:
+#        offer: UbuntuServer
+#        publisher: Canonical
+#        sku: 16.04-LTS
+#        version: latest
