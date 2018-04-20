@@ -1,0 +1,9 @@
+K [Create ( or update ) PostgreSQL Server] ****************************************************************
+An exception occurred during task execution. To see the full traceback, use -vvv. The error was: NameError: global name 'PostgreSQLManagementClient' is not defined
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "module_stderr": "Traceback (most recent call last):\n  File \"/tmp/ansible_jKH2PO/ansible_module_azure_rm_postgresqlserver.py\", line 365, in <module>\n    main()\n  File \"/tmp/ansible_jKH2PO/ansible_module_azure_rm_postgresqlserver.py\", line 362, in main\n    AzureRMServers()\n  File \"/tmp/ansible_jKH2PO/ansible_module_azure_rm_postgresqlserver.py\", line 199, in __init__\n    supports_tags=False)\n  File \"/tmp/ansible_jKH2PO/ansible_modlib.zip/ansible/module_utils/azure_rm_common.py\", line 345, in __init__\n  File \"/tmp/ansible_jKH2PO/ansible_module_azure_rm_postgresqlserver.py\", line 234, in exec_module\n    self.mgmt_client = self.get_mgmt_svc_client(PostgreSQLManagementClient,\nNameError: global name 'PostgreSQLManagementClient' is not defined\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 1}
+	to retry, use: --limit @/home/fred/task/38431.retry
+
+PLAY RECAP ***************************************************************************************************
+127.0.0.1                  : ok=2    changed=0    unreachable=0    failed=1  
+
+azure-mgmt-rdbms==0.1.0 / 0.2.0rc1 

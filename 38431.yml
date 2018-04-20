@@ -1,0 +1,27 @@
+---
+- name: For postgresqlserver try
+  hosts: localhost
+  connection: local
+  vars: 
+    resource_group: myRG03
+    location: westeurope
+  tasks:
+  - name: Create resource group
+    azure_rm_resourcegroup:
+      name: "{{ resource_group }}"
+      location: "{{ location }}"
+    
+  - name: Create ( or update ) PostgreSQL Server
+    azure_rm_postgresqlserver: 
+      resource_group: "{{ resource_group }}"
+      name: tttsss
+      sku: 
+        name: PGSQLS100
+        tier: Basic
+        capacity: 100
+      location: eastus
+      storage_mb: 10240
+      enforce_ssl: True
+      admin_username: cloudsa
+      admin_password: Fred@0329
+
