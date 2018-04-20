@@ -6,4 +6,23 @@ fatal: [127.0.0.1]: FAILED! => {"changed": false, "module_stderr": "Traceback (m
 PLAY RECAP ***************************************************************************************************
 127.0.0.1                  : ok=2    changed=0    unreachable=0    failed=1  
 
-azure-mgmt-rdbms==0.1.0 / 0.2.0rc1 
+azure-mgmt-rdbms==0.1.0 / 0.2.0rc1
+
+
+PLAY [For postgresqlserver try] ******************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************************
+ok: [127.0.0.1]
+
+TASK [Create resource group] *********************************************************************************
+ok: [127.0.0.1]
+
+TASK [Create ( or update ) PostgreSQL Server] ****************************************************************
+ [WARNING]: Azure API profile latest does not define an entry for PostgreSQLManagementClient
+
+ok: [127.0.0.1]
+
+PLAY RECAP ***************************************************************************************************
+127.0.0.1                  : ok=3    changed=0    unreachable=0    failed=0   
+
+ 
