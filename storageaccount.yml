@@ -1,0 +1,25 @@
+---
+# Resource_group and image has create before excute
+- name: For Azure learn
+  hosts: localhost
+  connection: local
+  vars:
+    resource_group: myRG03
+    location: westeurope
+    storageaccount: sssaaa04
+
+  tasks:
+  - name: create resource group
+    azure_rm_resourcegroup:
+      name: "{{ resource_group }}"
+      location: "{{ location }}"
+      
+  - name: create storage account
+    azure_rm_storageaccount:
+      resource_group: "{{ resource_group }}"
+      name: "{{ storageaccount }}"
+      account_type: Standard_LRS
+    register: test
+  - name: print msg
+    debug:
+      var: test
