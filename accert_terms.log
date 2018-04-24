@@ -1,0 +1,9 @@
+TASK [create an availability set with default options] ************************************
+ok: [127.0.0.1]
+
+TASK [create virtual machine] *************************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Error myVM has a provisioning state of Failed. Expecting state to be Succeeded."}
+	to retry, use: --limit @/home/fred/task/accept_terms.retry
+
+PLAY RECAP ********************************************************************************
+127.0.0.1                  : ok=9    changed=2    unreachable=0    failed=1 
