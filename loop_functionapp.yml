@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  roles:
+    - resourcesupport
+  vars:
+    resource_group: zimsstresstest
+    location: eastus
+    fixed_resource_prefix: xxxxfunioasjd
+  tasks:   
+    - name: Create a resource group
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        location: "{{ location }}"
+
+    - name: create storage account for function apps
+      azure_rm_storageaccount:
+        resource_group: '{{ resource_group }}'
+        name: sa{{ fixed_resource_prefix }}
+        account_type: Standard_LRS
+
+    - include: stress-azure-function-tasks.yml
+      with_items:
+        - 0
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+        - 6
+        - 7
+        - 8
+        - 9
