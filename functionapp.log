@@ -1,0 +1,147 @@
+PLAY [localhost] **************************************************************************
+
+TASK [Gathering Facts] ********************************************************************
+ok: [127.0.0.1]
+
+TASK [resourcesupport : debug] ************************************************************
+skipping: [127.0.0.1]
+
+TASK [Create a resource group] ************************************************************
+changed: [127.0.0.1]
+
+TASK [create storage account for function apps] *******************************************
+changed: [127.0.0.1]
+
+TASK [include] ****************************************************************************
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+
+TASK [create a function with app settings] ************************************************
+ [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
+
+changed: [127.0.0.1]
+
+TASK [assert the function with app settings was created] **********************************
+ok: [127.0.0.1] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [change app settings] ****************************************************************
+changed: [127.0.0.1]
+
+TASK [assert the function was changed] ****************************************************
+ok: [127.0.0.1] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [delete the function app] ************************************************************
+changed: [127.0.0.1]
+
+TASK [assert the function was deleted] ****************************************************
+ok: [127.0.0.1] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [create a function with app settings] ************************************************
+changed: [127.0.0.1]
+
+TASK [assert the function with app settings was created] **********************************
+ok: [127.0.0.1] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [change app settings] ****************************************************************
+changed: [127.0.0.1]
+
+TASK [assert the function was changed] ****************************************************
+ok: [127.0.0.1] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [delete the function app] ************************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Failure while deleting web app: 409 Client Error: Conflict for url: https://management.azure.com/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG1/providers/Microsoft.Web/sites/afsssaaax?api-version=2016-08-01"}
+	to retry, use: --limit @/home/fred/task/loop_functionapp.retry
+
+PLAY RECAP ********************************************************************************
+127.0.0.1                  : ok=23   changed=7    unreachable=0    failed=1   
+
+Failed at second time to delete deploy
+
+
+PLAY [localhost] **************************************************************************
+
+TASK [Gathering Facts] ********************************************************************
+ok: [127.0.0.1]
+
+TASK [resourcesupport : debug] ************************************************************
+skipping: [127.0.0.1]
+
+TASK [Create a resource group] ************************************************************
+ok: [127.0.0.1]
+
+TASK [create storage account for function apps] *******************************************
+ok: [127.0.0.1]
+
+TASK [include] ****************************************************************************
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+included: /home/fred/task/loop_functionapp_task.yml for 127.0.0.1
+
+TASK [create a function with app settings] ************************************************
+ [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
+
+changed: [127.0.0.1]
+
+TASK [assert the function with app settings was created] **********************************
+ok: [127.0.0.1] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [change app settings] ****************************************************************
+changed: [127.0.0.1]
+
+TASK [assert the function was changed] ****************************************************
+ok: [127.0.0.1] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [delete the function app] ************************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Failure while deleting web app: 409 Client Error: Conflict for url: https://management.azure.com/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG1/providers/Microsoft.Web/sites/afsssaaax?api-version=2016-08-01"}
+	to retry, use: --limit @/home/fred/task/loop_functionapp.retry
+
+PLAY RECAP ********************************************************************************
+127.0.0.1                  : ok=17   changed=2    unreachable=0    failed=1 
+
+: Fail at first delete deploy
+
+
+TASK [create a function with app settings] ************************************************
+ [WARNING]: Azure API profile latest does not define an entry for WebSiteManagementClient
+
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Error creating or updating web app: 429 Client Error: Too Many Requests for url: https://management.azure.com/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG1/providers/Microsoft.Web/sites/afsssaaax?api-version=2016-08-01"}
+	to retry, use: --limit @/home/fred/task/loop_functionapp.retry
+
+PLAY RECAP ********************************************************************************
+127.0.0.1                  : ok=13   changed=0    unreachable=0    failed=1   
