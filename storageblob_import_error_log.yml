@@ -1,0 +1,64 @@
+Y [For Azure learn] *********************************************************************************
+
+TASK [Gathering Facts] *********************************************************************************
+ok: [127.0.0.1]
+
+TASK [create resource group] ***************************************************************************
+ok: [127.0.0.1]
+
+TASK [create storage account] **************************************************************************
+ok: [127.0.0.1]
+
+TASK [Create a storage container and upload the image as a blob] ***************************************
+changed: [127.0.0.1]
+
+TASK [debug] *******************************************************************************************
+ok: [127.0.0.1] => {
+    "result": {
+        "blob": {
+            "content_length": 112366, 
+            "content_settings": {
+                "cache_control": null, 
+                "content_disposition": null, 
+                "content_encoding": null, 
+                "content_language": null, 
+                "content_md5": null, 
+                "content_type": "pape"
+            }, 
+            "last_modified": "12-Apr-2018 02:04:03 +0000", 
+            "name": "graylog.png", 
+            "tags": {}, 
+            "type": "BlockBlob"
+        }, 
+        "changed": true, 
+        "check_mode": false, 
+        "container": {
+            "last_mdoified": "11-Apr-2018 08:24:39 +0000", 
+            "name": "foo", 
+            "tags": {}
+        }, 
+        "failed": false
+    }
+}
+
+PLAY RECAP *********************************************************************************************
+127.0.0.1                  : ok=5    changed=1    unreachable=0    failed=0  
+
+
+Uninstall packaging
+TASK [create resource group] **********************************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Do you have packaging installed? Try `pip install packaging`- No module named packaging.version"}
+	to retry, use: --limit @/home/fred/task/task08/1.retry
+
+PLAY RECAP ****************************************************************************************
+127.0.0.1                  : ok=1    changed=0    unreachable=0    failed=1  
+
+
+###############################################
+
+TASK [create resource group] ***************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Do you have azure>=2.0.0 installed? Try `pip install ansible[azure]`- No module named azure.common.credentials"}
+	to retry, use: --limit @/home/fred/task/task08/1.retry
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=1    changed=0    unreachable=0    failed=1 
