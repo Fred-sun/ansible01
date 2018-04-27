@@ -44,8 +44,9 @@ ok: [127.0.0.1] => {
 PLAY RECAP *********************************************************************************************
 127.0.0.1                  : ok=5    changed=1    unreachable=0    failed=0  
 
-
+######################################################
 Uninstall packaging
+
 TASK [create resource group] **********************************************************************
 fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Do you have packaging installed? Try `pip install packaging`- No module named packaging.version"}
 	to retry, use: --limit @/home/fred/task/task08/1.retry
@@ -61,4 +62,46 @@ fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Do you have azure>=2.0
 	to retry, use: --limit @/home/fred/task/task08/1.retry
 
 PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=1    changed=0    unreachable=0    failed=1
+
+remove all azure module: pip uninstall -y $( pip freeze | grep azure)
+
+TASK [create resource group] ***************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Do you have azure>=2.0.0 installed? Try `pip install ansible[azure]`- No module named msrestazure.azure_exceptions"}
+	to retry, use: --limit @/home/fred/task/task08/1.retry
+
+PLAY RECAP *********************************************************************
 127.0.0.1                  : ok=1    changed=0    unreachable=0    failed=1 
+########################################################
+remove all azure relation module
+ok: [127.0.0.1]
+
+TASK [create resource group] ***************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Do you have azure>=2.0.0 installed? Try `pip install ansible[azure]`- No module named msrestazure.azure_exceptions"}
+	to retry, use: --limit @/home/fred/task/task08/1.retry
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=1    changed=0    unreachable=0    failed=1   
+################################################################
+reinstall azure fail 
+TASK [create resource group] ***************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Do you have azure>=2.0.0 installed? Try `pip install ansible[azure]`- No module named cloudstorageaccount"}
+	to retry, use: --limit @/home/fred/task/task08/1.retry
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=1    changed=0    unreachable=0    failed=1  
+
+###################################################################
+reinstall ansible[azure] , run pass,
+###################################################################
+install azure=2.0.0rc3
+TASK [create resource group] ***************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Do you have azure>=2.0.0 installed? Try `pip install ansible[azure]`- No module named msrestazure.azure_exceptions"}
+	to retry, use: --limit @/home/fred/task/task08/1.retry
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=1    changed=0    unreachable=0    failed=1
+#############################################################
+uninstall azure and reinstall ansible[azure]  run pass
+#################################################################
+ 
