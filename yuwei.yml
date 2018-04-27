@@ -1,0 +1,41 @@
+---
+- hosts: localhost
+  vars:
+    resource_group: yuwzhotest
+  tasks:
+   - name: create resource_group
+     azure_rm_resourcegroup:
+       name: "{{ resource_group }}"
+       location: eastus
+   - name: Create security group
+     azure_rm_securitygroup:
+       resource_group: "{{ resource_group }}"
+       name: mysecgroup
+       tags:
+          testing: testing
+          delete: on-exit
+          foo: bar
+       purge_rules: yes
+       rules:
+          - name: DenySSH
+            protocol: Tcp
+            destination_port_range: 22
+            access: Deny
+            priority: 100
+            direction: Inbound
+          - name: AllowSSH
+            protocol: Tcp
+            source_address_prefix: 174.109.158.0/24
+            destination_port_range: 22
+            access: Allow
+            priority: 101
+            direction: Inbound
+   - name: Create network interface
+     azure_rm_networkinterface:
+        resource_group: "{{ resource_group }}"
+        name: testnic001rg
+        virtual_network: testnic001
+        subnet: testnic001
+        public_ip_name: testnic001
+        public_ip_allocation_method: Static
+        security_group: mysecgroup
