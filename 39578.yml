@@ -1,0 +1,37 @@
+- hosts: localhost
+
+  tasks:
+    - name: delete RG
+      azure_rm_resourcegroup:
+        name: to_be_deleted
+        location: westeurope
+        state: absent
+        subscription_id: XXXXX
+        client_id: XXXXX
+        secret: XXXXX
+        tenant: XXXXX
+
+    - name: create a new RG
+      azure_rm_resourcegroup:
+        name: to_be_deleted
+        location: westeurope
+        tags:
+          first_tag: nothing
+          second_tag: to_be_updated
+        subscription_id: XXXXX
+        client_id: XXXXX
+        secret: XXXXX
+        tenant: XXXXX
+
+    - name: update RG tags
+      azure_rm_resourcegroup:
+        name: to_be_deleted
+        location: westeurope
+        append_tags: True
+        tags:
+          second_tag: updated
+          third_tag: new
+        subscription_id: XXXXX
+        client_id: XXXXX
+        secret: XXXXX
+        tenant: XXXXX
