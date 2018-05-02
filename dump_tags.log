@@ -1,0 +1,162 @@
+
+TASK [create virtual machine] **************************************************
+changed: [127.0.0.1]
+
+TASK [dump tags log] ***********************************************************
+ok: [127.0.0.1] => {
+    "tags_dump": {
+        "ansible_facts": {
+            "azure_vm": {
+                "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/myVM", 
+                "location": "westeurope", 
+                "name": "myVM", 
+                "powerstate": "running", 
+                "properties": {
+                    "hardwareProfile": {
+                        "vmSize": "Standard_A0"
+                    }, 
+                    "instanceView": {
+                        "disks": [
+                            {
+                                "name": "myVM", 
+                                "statuses": [
+                                    {
+                                        "code": "ProvisioningState/succeeded", 
+                                        "displayStatus": "Provisioning succeeded", 
+                                        "level": "Info", 
+                                        "time": "2018-05-02T07:31:10.998317Z"
+                                    }
+                                ]
+                            }
+                        ], 
+                        "statuses": [
+                            {
+                                "code": "ProvisioningState/succeeded", 
+                                "displayStatus": "Provisioning succeeded", 
+                                "level": "Info", 
+                                "time": "2018-05-02T07:39:20.305811Z"
+                            }, 
+                            {
+                                "code": "PowerState/running", 
+                                "displayStatus": "VM running", 
+                                "level": "Info"
+                            }
+                        ], 
+                        "vmAgent": {
+                            "extensionHandlers": [], 
+                            "statuses": [
+                                {
+                                    "code": "ProvisioningState/succeeded", 
+                                    "displayStatus": "Ready", 
+                                    "level": "Info", 
+                                    "message": "Guest Agent is running", 
+                                    "time": "2018-05-02T07:39:52.000Z"
+                                }
+                            ], 
+                            "vmAgentVersion": "2.2.25"
+                        }
+                    }, 
+                    "networkProfile": {
+                        "networkInterfaces": [
+                            {
+                                "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/networkInterfaces/test_nic", 
+                                "name": "test_nic", 
+                                "properties": {
+                                    "dnsSettings": {
+                                        "appliedDnsServers": [], 
+                                        "dnsServers": [], 
+                                        "internalDomainNameSuffix": "20hpebwc3mhe1ghnkjh0s2xnfd.ax.internal.cloudapp.net"
+                                    }, 
+                                    "enableAcceleratedNetworking": false, 
+                                    "enableIPForwarding": false, 
+                                    "ipConfigurations": [
+                                        {
+                                            "etag": "W/\"3e2520aa-10ca-4c17-b561-a3ce3bf0ad09\"", 
+                                            "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/networkInterfaces/test_nic/ipConfigurations/default", 
+                                            "name": "default", 
+                                            "properties": {
+                                                "primary": true, 
+                                                "privateIPAddress": "10.0.1.4", 
+                                                "privateIPAddressVersion": "IPv4", 
+                                                "privateIPAllocationMethod": "Dynamic", 
+                                                "provisioningState": "Succeeded", 
+                                                "publicIPAddress": {
+                                                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/publicIPAddresses/public_ip", 
+                                                    "name": "public_ip", 
+                                                    "properties": {
+                                                        "idleTimeoutInMinutes": 4, 
+                                                        "ipAddress": "51.144.232.138", 
+                                                        "ipConfiguration": {
+                                                            "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/networkInterfaces/test_nic/ipConfigurations/default"
+                                                        }, 
+                                                        "provisioningState": "Succeeded", 
+                                                        "publicIPAddressVersion": "IPv4", 
+                                                        "publicIPAllocationMethod": "Static", 
+                                                        "resourceGuid": "4e31da91-8c17-4f02-a126-baba6a95effb"
+                                                    }
+                                                }, 
+                                                "subnet": {
+                                                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/virtualnetwork/subnets/subnet"
+                                                }
+                                            }
+                                        }
+                                    ], 
+                                    "macAddress": "00-0D-3A-25-E5-25", 
+                                    "networkSecurityGroup": {
+                                        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/networkSecurityGroups/security_ssh"
+                                    }, 
+                                    "primary": true, 
+                                    "provisioningState": "Succeeded", 
+                                    "resourceGuid": "d3614f42-8615-43c4-b291-ab232815b4d4", 
+                                    "virtualMachine": {
+                                        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Compute/virtualMachines/myVM"
+                                    }
+                                }
+                            }
+                        ]
+                    }, 
+                    "osProfile": {
+                        "adminUsername": "azureuser", 
+                        "computerName": "myVM", 
+                        "linuxConfiguration": {
+                            "disablePasswordAuthentication": false
+                        }, 
+                        "secrets": []
+                    }, 
+                    "provisioningState": "Succeeded", 
+                    "storageProfile": {
+                        "dataDisks": [], 
+                        "imageReference": {
+                            "offer": "UbuntuServer", 
+                            "publisher": "Canonical", 
+                            "sku": "16.04-LTS", 
+                            "version": "16.04.201804270"
+                        }, 
+                        "osDisk": {
+                            "caching": "ReadOnly", 
+                            "createOption": "fromImage", 
+                            "diskSizeGB": 30, 
+                            "managedDisk": {
+                                "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Compute/disks/myVM", 
+                                "storageAccountType": "Standard_LRS"
+                            }, 
+                            "name": "myVM", 
+                            "osType": "Linux"
+                        }
+                    }, 
+                    "vmId": "bcd8dffb-c5f0-4d8b-93d1-fa596bc70033"
+                }, 
+                "tags": {
+                    "role_ealsticsearch-data": "vm1", 
+                    "role_elasticsearch": "vm1", 
+                    "role_elasticsearch_ealsticsearch-data": "vm1"
+                }, 
+                "type": "Microsoft.Compute/virtualMachines"
+            }
+        }, 
+        "changed": true, 
+        "failed": false, 
+        "powerstate_change": null
+    }
+}
+
