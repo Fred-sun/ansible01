@@ -1,0 +1,41 @@
+---
+# virtualnetwork has been deploy by subnet and VM
+- name: For virtual network test
+  hosts: localhost
+  connection: local
+  vars:
+    resource_group: myRG
+    location: westeurope
+    virtualnetwork: virtualnetwork
+    virtualnetwork01: virtualnetwork01
+
+  tasks:
+  - name: create virtual network01
+    azure_rm_virtualnetwork:
+      resource_group: "{{ resource_group }}"
+      name: "{{ virtualnetwork01 }}"
+      api_profile: '2017-03-09-profile'
+      address_prefixes: "10.0.0.0/16"
+      dns_servers:
+          - "127.0.0.1"
+
+  - name: create virtual network01
+    azure_rm_virtualnetwork:
+      resource_group: "{{ resource_group }}"
+      name: "{{ virtualnetwork01 }}"
+      api_profile: '2017-03-09-profile'
+      address_prefixes: "10.0.0.0/16"
+      dns_servers:
+          - "128.0.0.1"
+
+  - name: create virtual network
+    azure_rm_virtualnetwork:
+      resource_group: "{{ resource_group }}"
+      name: "{{ virtualnetwork }}"
+      api_profile: '2017-03-09-profile'
+      address_prefixes: "10.0.0.0/16"
+      dns_servers:
+          - "128.0.0.1"
+
+
+

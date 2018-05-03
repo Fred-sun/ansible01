@@ -1,0 +1,17 @@
+PLAY [For virtual network test] *************************************************************
+
+TASK [Gathering Facts] **********************************************************************
+ok: [127.0.0.1]
+
+TASK [create virtual network01] *************************************************************
+changed: [127.0.0.1]
+
+TASK [create virtual network01] *************************************************************
+changed: [127.0.0.1]
+
+TASK [create virtual network] ***************************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "module_stderr": "No handlers could be found for logger \"msrestazure.azure_active_directory\"\nTraceback (most recent call last):\n  File \"/tmp/ansible_XZpmFV/ansible_module_azure_rm_virtualnetwork.py\", line 352, in <module>\n    main()\n  File \"/tmp/ansible_XZpmFV/ansible_module_azure_rm_virtualnetwork.py\", line 349, in main\n    AzureRMVirtualNetwork()\n  File \"/tmp/ansible_XZpmFV/ansible_module_azure_rm_virtualnetwork.py\", line 205, in __init__\n    supports_check_mode=True)\n  File \"/tmp/ansible_XZpmFV/ansible_modlib.zip/ansible/module_utils/azure_rm_common.py\", line 345, in __init__\n  File \"/tmp/ansible_XZpmFV/ansible_module_azure_rm_virtualnetwork.py\", line 264, in exec_module\n    existing_dns_set = set(vnet.dhcp_options.dns_servers)\nAttributeError: 'NoneType' object has no attribute 'dns_servers'\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 1}
+	to retry, use: --limit @/home/fred/task/39648/39648.retry
+
+PLAY RECAP **********************************************************************************
+127.0.0.1                  : ok=3    changed=2    unreachable=0    failed=1 
