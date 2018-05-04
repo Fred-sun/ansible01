@@ -1,0 +1,15 @@
+fred@fred-Virtual-Machine:~/ansible01/ansible/test/integration/targets/azure_rm_keyvaultkey/tasks$ ansible-test integration azure_rm_keyvaultkey --docker -v --allow-disabled
+WARNING: Excluding tests marked "cloud/azure" which require config (see "test/integration/cloud-config-azure.yml.template"): azure_rm_keyvaultkey
+WARNING: All targets skipped.
+fred@fred-Virtual-Machine:~/ansible01/ansible/test/integration/targets/azure_rm_keyvaultkey/tasks$ export
+declare -x ANSIBLE_HOME="/home/fred/ansible01/ansible"
+declare -x AZURE_CLIENT_ID="eec5624a-90f8-4386-8a87-02730b5410d5"
+declare -x AZURE_SECRET="531dcffa-3aff-4488-99bb-4816c395ea3f"
+declare -x AZURE_SUBSCRIPTION_ID="2085065b-00f8-4cba-9675-ba15f4d4ab66"
+declare -x AZURE_TENANT="72f988bf-86f1-41af-91ab-2d7cd011db47"
+
+
+fred@fred-Virtual-Machine:~/ansible01/ansible/test/integration$ ansible-test integration azure_rm_keyvaultsecret --docker -v --allow-disabled
+WARNING: Excluding tests marked "cloud/azure" which require config (see "test/integration/cloud-config-azure.yml.template"): azure_rm_keyvaultsecret
+WARNING: All targets skipped.
+
