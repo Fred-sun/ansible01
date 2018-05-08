@@ -1,0 +1,73 @@
+TASK [dump NIC log] ************************************************************
+ok: [127.0.0.1] => {
+    "NIC_log": {
+        "changed": true, 
+        "deprecations": [
+            {
+                "msg": "Setting ip_configuration flatten is deprecated and will be removed. Using ip_configurations list to define the ip configuration", 
+                "version": "2.9"
+            }
+        ], 
+        "failed": false, 
+        "state": {
+            "dns_settings": {
+                "applied_dns_servers": [], 
+                "dns_servers": [], 
+                "internal_dns_name_label": null, 
+                "internal_fqdn": null
+            }, 
+            "enable_ip_forwarding": false, 
+            "etag": "W/\"39d38773-ea89-4e24-8b2e-a27e29417889\"", 
+            "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG01/providers/Microsoft.Network/networkInterfaces/myNIC", 
+            "ip_configuration": {
+                "load_balancer_backend_address_pools": null, 
+                "name": "default", 
+                "primary": true, 
+                "private_ip_address": "10.0.1.4", 
+                "private_ip_allocation_method": "Dynamic", 
+                "public_ip_address": {
+                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG01/providers/Microsoft.Network/publicIPAddresses/myPublicIP", 
+                    "name": "myPublicIP", 
+                    "public_ip_allocation_method": null
+                }, 
+                "subnet": {
+                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG01/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet", 
+                    "name": "mySubnet", 
+                    "resource_group": "myRG01", 
+                    "virtual_network_name": "myVnet"
+                }
+            }, 
+            "ip_configurations": [
+                {
+                    "load_balancer_backend_address_pools": null, 
+                    "name": "default", 
+                    "primary": true, 
+                    "private_ip_address": "10.0.1.4", 
+                    "private_ip_allocation_method": "Dynamic", 
+                    "public_ip_address": {
+                        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG01/providers/Microsoft.Network/publicIPAddresses/myPublicIP", 
+                        "name": "myPublicIP", 
+                        "public_ip_allocation_method": null
+                    }, 
+                    "subnet": {
+                        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG01/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/mySubnet", 
+                        "name": "mySubnet", 
+                        "resource_group": "myRG01", 
+                        "virtual_network_name": "myVnet"
+                    }
+                }
+            ], 
+            "location": "eastus", 
+            "mac_address": null, 
+            "name": "myNIC", 
+            "network_security_group": {
+                "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG01/providers/Microsoft.Network/networkSecurityGroups/myNetworkSecurityGroup", 
+                "name": "myNetworkSecurityGroup"
+            }, 
+            "provisioning_state": "Succeeded", 
+            "tags": null, 
+            "type": "Microsoft.Network/networkInterfaces"
+        }
+    }
+}
+

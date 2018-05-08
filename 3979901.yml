@@ -3,24 +3,24 @@
   hosts: localhost
   connection: local
   gather_facts: false  
-  roles: 
-    - role: azure_preview_modules 
+#  roles: 
+#    - role: Azure.azure_preview_modules 
   tasks:
     - name: Create Resource Group
       azure_rm_resourcegroup:
-        name: myRG01
+        name: myRG
         location: eastus
     - name: Create virtual network
       local_action:
         module: azure_rm_virtualnetwork
-        resource_group: myRG01
+        resource_group: myRG
         name: myVnet
         address_prefixes: "10.0.0.0/16"
         
     - name: Create Network Security Group
       local_action:
         module: azure_rm_securitygroup
-        resource_group: myRG01
+        resource_group: myRG
         name: myNetworkSecurityGroup
         purge_default_rules: yes
         rules:
@@ -52,7 +52,7 @@
     - name: Add subnet
       local_action:
         module: azure_rm_subnet
-        resource_group: myRG01
+        resource_group: myRG
         name: mySubnet
         address_prefix: "10.0.1.0/24"
         virtual_network: myVnet
@@ -61,7 +61,7 @@
     - name: Create virtual network inteface card
       local_action:
         module: azure_rm_networkinterface
-        resource_group:  myRG01
+        resource_group:  myRG
         name: myNIC
         virtual_network: myVnet
         subnet: mySubnet
@@ -70,11 +70,11 @@
       register: NIC_log
     - name: dump NIC log
       debug:
-        var: NIC_log
+        var: NIC_log        
             
     - name: Create public IP address
       local_action:
         module: azure_rm_publicipaddress
-        resource_group: myRG01
+        resource_group: myRG
         allocation_method: Static
         name: myPublicIP   
