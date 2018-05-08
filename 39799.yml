@@ -1,0 +1,75 @@
+- name: Create Azure VM
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  
+  roles: 
+    - role: Azure.azure_preview_modules 
+
+ 
+  tasks:
+    - name: Create virtual network
+      local_action:
+        module: azure_rm_virtualnetwork
+        resource_group: myRG
+        name: myVnet
+        address_prefixes: "10.0.0.0/16"
+        
+    - name: Create Network Security Group
+      local_action:
+        module: azure_rm_securitygroup
+        resource_group: myRG
+        name: myNetworkSecurityGroup
+        purge_default_rules: yes
+        rules:
+          - name: SSH
+            protocol: Tcp
+            destination_port_range: 22
+            access: Allow
+            priority: 1001
+            direction: Inbound
+          - name: HTTP
+            protocol: Tcp
+            destination_port_range: 80
+            access: Allow
+            priority: 1002
+            direction: Inbound
+          - name: port_8080
+            protocol: Tcp
+            destination_port_range: 8080
+            access: Allow
+            priority: 1003
+            direction: Inbound
+          - name: port_443
+            protocol: Tcp
+            destination_port_range: 443
+            access: Allow
+            priority: 1004
+            direction: Inbound
+
+    - name: Add subnet
+      local_action:
+        module: azure_rm_subnet
+        resource_group: myRG
+        name: mySubnet
+        address_prefix: "10.0.1.0/24"
+        virtual_network: myVnet
+        
+
+    - name: Create virtual network inteface card
+      local_action:
+        module: azure_rm_networkinterface
+        resource_group:  myRG
+        name: myNIC
+        virtual_network: myVnet
+        subnet: mySubnet
+        public_ip_name: myPublicIP
+        security_group_name: myNetworkSecurityGroup
+        
+            
+    - name: Create public IP address
+      local_action:
+        module: azure_rm_publicipaddress
+        resource_group: myRG
+        allocation_method: Static
+        name: myPublicIP   
