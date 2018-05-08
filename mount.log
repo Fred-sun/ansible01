@@ -1,0 +1,20 @@
+TASK [dump mount message] ******************************************************
+ok: [127.0.0.1] => {
+    "mount_log": {
+        "changed": false, 
+        "failed": false, 
+        "state": {
+            "disk_size_gb": 32, 
+            "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG05/providers/Microsoft.Compute/disks/mymnageddisk", 
+            "location": "westeurope", 
+            "managed_by": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG05/providers/Microsoft.Compute/virtualMachines/myVM05", 
+            "name": "mymnageddisk", 
+            "os_type": null, 
+            "storage_account_type": "Standard_LRS", 
+            "tags": null
+        }
+    }
+}
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=11   changed=1    unreachable=0    failed=0 
