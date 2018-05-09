@@ -1,0 +1,83 @@
+hosts: localhost
+vars:
+location: frn00006
+resource_group: SC1
+storage_account: ansiblepocsa
+virtual_network: ansiblevn001
+subnet: ansiblesubnet001
+publicip: ansiblepublicip001
+network_interface: ansibletestnic001
+security_group: ansiblesec001
+tasks:
+name: Create a resource group
+azure_rm_resourcegroup:
+api_profile: '2017-03-09-profile'
+name: "{{ resource_group }}"
+location: "{{ location }}"
+name: Create storage account
+azure_rm_storageaccount:
+resource_group: "{{ resource_group }}"
+api_profile: '2017-03-09-profile'
+name: "{{ storage_account }}"
+account_type: Standard_LRS
+location: "{{ location }}"
+name: Create virtual network
+azure_rm_virtualnetwork:
+resource_group: "{{ resource_group }}"
+name: "{{ virtual_network }}"
+api_profile: '2017-03-09-profile'
+address_prefixes: "10.10.0.0/16"
+name: Add subnet
+azure_rm_subnet:
+resource_group: "{{ resource_group }}"
+name: "{{ subnet }}"
+api_profile: '2017-03-09-profile'
+address_prefix: "10.10.0.0/24"
+virtual_network: "{{ virtual_network }}"
+name: Create public ip
+azure_rm_publicipaddress:
+resource_group: "{{ resource_group }}"
+allocation_method: Static
+api_profile: '2017-03-09-profile'
+name: "{{ publicip }}"
+name: Create security group that allows SSH
+azure_rm_securitygroup:
+resource_group: "{{ resource_group }}"
+api_profile: '2017-03-09-profile'
+name: "{{ security_group }}"
+rules:
+name: SSH
+source_address_prefix: '*'
+protocol: Tcp
+destination_port_range: 22
+access: Allow
+priority: 101
+direction: Inbound
+name: Create NIC
+azure_rm_networkinterface:
+resource_group: "{{ resource_group }}"
+name: "{{ network_interface }}"
+virtual_network: "{{ virtual_network }}"
+api_profile: '2017-03-09-profile'
+ip_configurations:
+name: SC
+public_ip_address_name: "name1"
+primary: True
+subnet: "{{ subnet }}"
+public_ip_name: "{{ publicip }}"
+security_group: "{{ security_group }}"
+name: Create virtual machine
+azure_rm_virtualmachine:
+api_profile: '2017-03-09-profile'
+resource_group: "{{ resource_group }}"
+name: ansibletestvm001
+vm_size: Standard_D1_v2
+storage_account: "{{ storage_account }}"
+admin_username: ukcloudadmin
+admin_password: Password123!
+network_interfaces: "{{ network_interface }}"
+image:
+offer: CentOS
+publisher: OpenLogic
+sku: '6.9'
+version: 6.9.20180105
