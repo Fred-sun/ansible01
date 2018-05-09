@@ -1,0 +1,21 @@
+fred@fred-Virtual-Machine:~/task/36163$ ansible-playbook  36163.yml 
+
+PLAY [localhost] ***************************************************************
+
+TASK [create resource group] ***************************************************
+changed: [127.0.0.1]
+
+TASK [create virtual network] **************************************************
+changed: [127.0.0.1]
+
+TASK [create subnet] ***********************************************************
+changed: [127.0.0.1]
+
+TASK [create network interface] ************************************************
+changed: [127.0.0.1]
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=4    changed=4    unreachable=0    failed=0 
+
+ansible 2.5.2
+
