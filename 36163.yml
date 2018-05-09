@@ -1,0 +1,35 @@
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: create resource group
+      azure_rm_resourcegroup:
+        name: "dummy"
+        location: "Northeurope"
+        profile: default
+
+    - name: create virtual network
+      azure_rm_virtualnetwork:
+        name: "dummy-vnet"
+        resource_group: "dummy"
+        address_prefixes: "172.100.1.0/24"
+
+    - name: create subnet
+      azure_rm_subnet:
+        name: "dummy-subnet"
+        resource_group: "dummy"
+        virtual_network: "dummy-vnet"
+        address_prefix: "172.100.1.0/24"
+
+    - name: create network interface
+      azure_rm_networkinterface:
+        name: "dummy-nic"
+        resource_group: "dummy"
+        security_group_name: "dummy-manager-sg"
+        virtual_network_name: "dummy-vnet"
+        subnet_name: "dummy-subnet"
+        ip_configurations:
+          - name: 'dummy-ip'
+            private_ip_address: "172.100.1.234"
+            private_ip_allocation_method: Static
+            primary: True
