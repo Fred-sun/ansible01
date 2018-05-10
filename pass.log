@@ -1,0 +1,112 @@
+TASK [create disk message] *****************************************************
+ok: [127.0.0.1] => {
+    "create_log": {
+        "changed": true, 
+        "msg": "All items completed", 
+        "results": [
+            {
+                "_ansible_ignore_errors": null, 
+                "_ansible_item_result": true, 
+                "_ansible_no_log": false, 
+                "_ansible_parsed": true, 
+                "changed": true, 
+                "failed": false, 
+                "invocation": {
+                    "module_args": {
+                        "ad_user": null, 
+                        "api_profile": "latest", 
+                        "append_tags": true, 
+                        "auth_source": null, 
+                        "cert_validation_mode": null, 
+                        "client_id": null, 
+                        "cloud_environment": null, 
+                        "create_option": null, 
+                        "disk_size_gb": 64, 
+                        "location": "westeurope", 
+                        "managed_by": null, 
+                        "name": "mydisk01", 
+                        "os_type": null, 
+                        "password": null, 
+                        "profile": null, 
+                        "resource_group": "myRG05", 
+                        "secret": null, 
+                        "source_resource_uri": null, 
+                        "source_uri": null, 
+                        "state": "present", 
+                        "storage_account_type": null, 
+                        "subscription_id": null, 
+                        "tags": null, 
+                        "tenant": null
+                    }
+                }, 
+                "item": "mydisk01", 
+                "state": {
+                    "disk_size_gb": 64, 
+                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG05/providers/Microsoft.Compute/disks/mydisk01", 
+                    "location": "westeurope", 
+                    "managed_by": null, 
+                    "name": "mydisk01", 
+                    "os_type": null, 
+                    "storage_account_type": "Standard_LRS", 
+                    "tags": null
+                }
+            }, 
+            {
+                "_ansible_ignore_errors": null, 
+                "_ansible_item_result": true, 
+                "_ansible_no_log": false, 
+                "_ansible_parsed": true, 
+                "changed": true, 
+                "failed": false, 
+                "invocation": {
+                    "module_args": {
+                        "ad_user": null, 
+                        "api_profile": "latest", 
+                        "append_tags": true, 
+                        "auth_source": null, 
+                        "cert_validation_mode": null, 
+                        "client_id": null, 
+                        "cloud_environment": null, 
+                        "create_option": null, 
+                        "disk_size_gb": 64, 
+                        "location": "westeurope", 
+                        "managed_by": null, 
+                        "name": "mydisk02", 
+                        "os_type": null, 
+                        "password": null, 
+                        "profile": null, 
+                        "resource_group": "myRG05", 
+                        "secret": null, 
+                        "source_resource_uri": null, 
+                        "source_uri": null, 
+                        "state": "present", 
+                        "storage_account_type": null, 
+                        "subscription_id": null, 
+                        "tags": null, 
+                        "tenant": null
+                    }
+                }, 
+                "item": "mydisk02", 
+                "state": {
+                    "disk_size_gb": 64, 
+                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG05/providers/Microsoft.Compute/disks/mydisk02", 
+                    "location": "westeurope", 
+                    "managed_by": null, 
+                    "name": "mydisk02", 
+                    "os_type": null, 
+                    "storage_account_type": "Standard_LRS", 
+                    "tags": null
+                }
+            }
+        ]
+    }
+}
+
+TASK [Mount the managed disk to VM] ********************************************
+
+changed: [127.0.0.1] => (item=mydisk01)
+failed: [127.0.0.1] (item=mydisk02) => {"changed": false, "item": "mydisk02", "msg": "Error updating virtual machine myVM05 - Azure Error: OperationNotAllowed\nMessage: The maximum number of data disks allowed to be attached to a VM of this size is 1.\nTarget: dataDisks"}
+	to retry, use: --limit @/home/fred/task/39903/39903.retry
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=11   changed=3    unreachable=0    failed=1

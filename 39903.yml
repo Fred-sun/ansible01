@@ -1,0 +1,115 @@
+---
+# Resource_group and image has create before excute
+- name: For Azure learn
+  hosts: localhost
+  connection: local
+  vars:
+    resource_group: myRG05
+    location: westeurope
+    storageaccount: sssaaa05
+    virtualnetwork: virtualnetwork05
+    subnet: subnet05
+    public_ip: public_ip05
+    security_ssh: security_ssh05
+    test_nic: test_nic05
+    vm_name: myVM05
+  tasks:
+  - name: create resource group
+    azure_rm_resourcegroup:
+      name: "{{ resource_group }}"
+      location: "{{ location }}"
+
+  - name: create storage account
+    azure_rm_storageaccount:
+      resource_group: "{{ resource_group }}"
+      name: "{{ storageaccount }}"
+      account_type: Standard_LRS
+
+  - name: create virtual network
+    azure_rm_virtualnetwork:
+      resource_group: "{{ resource_group }}"
+      name: "{{ virtualnetwork }}"
+      address_prefixes: "10.0.0.0/16"
+
+  - name: Add subnet
+    azure_rm_subnet:
+      resource_group: "{{ resource_group }}"
+      name: "{{ subnet }}"
+      address_prefix: "10.0.1.0/24"
+      virtual_network: "{{ virtualnetwork }}"
+
+  - name: create public ip
+    azure_rm_publicipaddress:
+      resource_group: "{{ resource_group }}"
+      allocation_method: Static
+      name: "{{ public_ip }}"
+  
+  - name: Create security group that allows SSH
+    azure_rm_securitygroup:
+      resource_group: "{{ resource_group }}"
+      name: "{{ security_ssh }}"
+      rules:
+        - name: SSH
+          protocol: Tcp
+          destination_port_range: 22
+          access: Allow
+          priority: 101
+          direction: Inbound
+  
+  - name: Create NIC
+    azure_rm_networkinterface:
+      resource_group: "{{ resource_group }}"
+      name: "{{ test_nic }}"
+      virtual_network: "{{ virtualnetwork }}"
+      subnet: "{{ subnet }}"
+      public_ip_name: "{{ public_ip}}"
+      security_group: "{{ security_ssh }}"
+
+  - name: create virtual machine
+    azure_rm_virtualmachine: 
+      resource_group: "{{ resource_group }}"
+      name: "{{ vm_name }}"
+      state: present
+      vm_size: Standard_A0
+      managed_disk_type: Standard_LRS
+      admin_username: azureuser
+      admin_password: Password@0329
+      virtual_network_name: "{{ virtualnetwork }}"
+      network_interface_names: "{{ test_nic }}"
+      storage_account_name: "{{ storageaccount }}"
+      image: 
+        offer: UbuntuServer
+        publisher: Canonical
+        sku: 16.04-LTS 
+        version: latest 
+      started: no
+
+  - name: Create an disk to VM
+    azure_rm_managed_disk:
+      name: "{{ item }}"
+      location: westeurope
+      resource_group: "{{ resource_group }}"
+      disk_size_gb:  64
+    with_items:
+        - mydisk01
+        - mydisk02
+    register: create_log
+  - name: create disk message
+    debug:
+      var: create_log
+    
+  - name: "Mount the managed disk to VM"
+    azure_rm_managed_disk:
+      name: "{{ item }}"
+      location: westeurope
+      resource_group: "{{ resource_group }}"
+      disk_size_gb:  64
+      managed_by: "{{ vm_name }}"
+    with_items:
+        - mydisk01
+        - mydisk02
+    register: mount_log
+  - name: dump mount message
+    debug:
+      var: mount_log
+
