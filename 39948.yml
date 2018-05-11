@@ -1,0 +1,23 @@
+---
+- name: Start training DC
+  hosts: localhost
+  connection: local
+
+  tasks:
+  - name: Start training DC
+    azure_rm_virtualmachine:
+      resource_group: training
+      name: training-dc
+      started: y
+
+---
+- name: Stop training DC
+  hosts: localhost
+  connection: local
+
+  tasks:
+  - name: Stop training DC
+    azure_rm_virtualmachine:
+      resource_group: training
+      name: training-dc
+      started: no
