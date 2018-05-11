@@ -1,0 +1,25 @@
+---
+# Resource_group and image has create before excute
+- name: For Azure learn
+  hosts: localhost
+  connection: local
+  vars:
+    resource_group: myRG03
+    location: westeurope
+    vm_name: myvm03
+  tasks:
+
+  - include: loop_test01.yml
+    with_items:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+
+

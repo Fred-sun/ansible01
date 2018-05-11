@@ -1,0 +1,19 @@
+---
+- name: Start training DC
+  hosts: localhost
+  connection: local
+  vars:
+    resource_group: myRG01
+    vm_name: myVM01
+  tasks:
+  - name: Start training DC
+    azure_rm_virtualmachine:
+      resource_group: "{{ resource_group }}"
+      name: "{{ vm_name }}"
+      started: y
+
+  - name: Stop training DC
+    azure_rm_virtualmachine:
+      resource_group: "{{ resource_group }}"
+      name: "{{ vm_name }}"
+      started: no
