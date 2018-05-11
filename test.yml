@@ -1,5 +1,4 @@
 ---
-# Resource_group and image has create before excute
 - name: For Azure learn
   hosts: localhost
   connection: local
@@ -92,7 +91,5 @@
       - 7
       - 8
       - 9
-      - 10
-      - 11
 
 
