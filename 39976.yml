@@ -3,21 +3,21 @@
   hosts: localhost
   connection: local
   vars:
-    resource_group: myRG04
+    resource_group: myRG03
     location: westeurope
-    virtualnetwork: virtualnetwork04
-    internal_virtualnetwork: internal_virtualnetwork04
-    internal_subnet: internal_subnet04
-    internal_public_ip: internal_public_ip04
-    internal_security_ssh: internal_security_ssh04
-    internal_test_nic: internal_test_nic04
+    virtualnetwork: virtualnetwork03
+    internal_virtualnetwork: internal_virtualnetwork03
+    internal_subnet: internal_subnet03
+    internal_public_ip: internal_public_ip03
+    internal_security_ssh: internal_security_ssh03
+    internal_test_nic: internal_test_nic03
 
-    external_virtualnetwork: external_virtualnetwork04
-    external_subnet: external_subnet04
-    external_public_ip: external_public_ip04
-    external_security_ssh: external_security_ssh04
-    external_test_nic: external_test_nic04
-    vm_name: myVM04
+    external_virtualnetwork: external_virtualnetwork03
+    external_subnet: external_subnet03
+    external_public_ip: external_public_ip03
+    external_security_ssh: external_security_ssh03
+    external_test_nic: external_test_nic03
+    vm_name: myVM03
 
   tasks:
   - name: create resource group
@@ -35,7 +35,7 @@
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
       name: "{{ internal_subnet }}"
-      address_prefix: "10.0.1.0/24"
+      address_prefix: "10.0.10.0/24"
       virtual_network: "{{ virtualnetwork }}"
 
   - name: create public ip-internal
@@ -56,18 +56,18 @@
           priority: 101
           direction: Inbound
 
-  - name: create virtual network -external
-    azure_rm_virtualnetwork:
-      resource_group: "{{ resource_group }}"
-      name: "{{ external_virtualnetwork }}"
-      address_prefixes: "10.0.0.0/16"
+#  - name: create virtual network -external
+#    azure_rm_virtualnetwork:
+##      resource_group: "{{ resource_group }}"
+# #     name: "{{ virtualnetwork }}"
+# #     address_prefixes: "10.0.0.0/16"
 
   - name: Add subnet-external
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
       name: "{{ external_subnet }}"
       address_prefix: "10.0.1.0/24"
-      virtual_network: "{{ external_virtualnetwork }}"
+      virtual_network: "{{ virtualnetwork }}"
 
   - name: create public ip-external
     azure_rm_publicipaddress:
@@ -90,7 +90,7 @@
   - azure_rm_networkinterface:
       resource_group: "{{ resource_group }}"
       name: "{{ external_test_nic }}"
-      virtual_network: "{{ external_virtualnetwork }}"
+      virtual_network: "{{ virtualnetwork }}"
       subnet_name: "{{ external_subnet }}"
       security_group_name: "{{ external_security_ssh }}"
       ip_configurations:
@@ -126,5 +126,9 @@
         offer: CentOS
         sku: '7.4'
         version: latest
+    register: create_vm_log
+  - name: dump crete vm log
+    debug:
+      var: create_vm_log
 
 
