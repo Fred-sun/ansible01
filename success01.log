@@ -1,0 +1,244 @@
+PLAY [For Azure learn] *********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [create resource group] ***************************************************
+ok: [127.0.0.1]
+
+TASK [create virtual network] **************************************************
+ok: [127.0.0.1]
+
+TASK [Add subnet-internal] *****************************************************
+ok: [127.0.0.1]
+
+TASK [create public ip-internal] ***********************************************
+ok: [127.0.0.1]
+
+TASK [Create security group that allows SSH-internal] **************************
+ok: [127.0.0.1]
+
+TASK [Add subnet-external] *****************************************************
+ok: [127.0.0.1]
+
+TASK [create public ip-external] ***********************************************
+ok: [127.0.0.1]
+
+TASK [Create security group that allows SSH-external] **************************
+ok: [127.0.0.1]
+
+TASK [azure_rm_networkinterface] ***********************************************
+ok: [127.0.0.1]
+
+TASK [azure_rm_networkinterface] ***********************************************
+changed: [127.0.0.1]
+
+TASK [azure_rm_virtualmachine] *************************************************
+ok: [127.0.0.1]
+
+TASK [dump crete vm log] *******************************************************
+ok: [127.0.0.1] => {
+    "create_vm_log": {
+        "ansible_facts": {
+            "azure_vm": {
+                "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Compute/virtualMachines/myVM03", 
+                "location": "westeurope", 
+                "name": "myVM03", 
+                "powerstate": "running", 
+                "properties": {
+                    "hardwareProfile": {
+                        "vmSize": "Standard_A0"
+                    }, 
+                    "instanceView": {
+                        "disks": [
+                            {
+                                "name": "myVM03.vhd", 
+                                "statuses": [
+                                    {
+                                        "code": "ProvisioningState/succeeded", 
+                                        "displayStatus": "Provisioning succeeded", 
+                                        "level": "Info", 
+                                        "time": "2018-05-14T08:21:01.43877Z"
+                                    }
+                                ]
+                            }
+                        ], 
+                        "statuses": [
+                            {
+                                "code": "ProvisioningState/succeeded", 
+                                "displayStatus": "Provisioning succeeded", 
+                                "level": "Info", 
+                                "time": "2018-05-14T08:23:58.041861Z"
+                            }, 
+                            {
+                                "code": "PowerState/running", 
+                                "displayStatus": "VM running", 
+                                "level": "Info"
+                            }
+                        ], 
+                        "vmAgent": {
+                            "extensionHandlers": [], 
+                            "statuses": [
+                                {
+                                    "code": "ProvisioningState/succeeded", 
+                                    "displayStatus": "Ready", 
+                                    "level": "Info", 
+                                    "message": "Guest Agent is running", 
+                                    "time": "2018-05-14T08:27:26.000Z"
+                                }
+                            ], 
+                            "vmAgentVersion": "2.2.25"
+                        }
+                    }, 
+                    "networkProfile": {
+                        "networkInterfaces": [
+                            {
+                                "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/networkInterfaces/internal_test_nic03", 
+                                "name": "internal_test_nic03", 
+                                "properties": {
+                                    "dnsSettings": {
+                                        "appliedDnsServers": [], 
+                                        "dnsServers": [], 
+                                        "internalDomainNameSuffix": "vzivy5wivy0u5nt04fjli15rmg.ax.internal.cloudapp.net"
+                                    }, 
+                                    "enableAcceleratedNetworking": false, 
+                                    "enableIPForwarding": false, 
+                                    "ipConfigurations": [
+                                        {
+                                            "etag": "W/\"fd93ad5e-43c9-4a9c-aa49-4eb36a9cfdb6\"", 
+                                            "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/networkInterfaces/internal_test_nic03/ipConfigurations/ipconfig1", 
+                                            "name": "ipconfig1", 
+                                            "properties": {
+                                                "primary": true, 
+                                                "privateIPAddress": "10.0.10.4", 
+                                                "privateIPAddressVersion": "IPv4", 
+                                                "privateIPAllocationMethod": "Dynamic", 
+                                                "provisioningState": "Succeeded", 
+                                                "subnet": {
+                                                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/virtualNetworks/virtualnetwork03/subnets/internal_subnet03"
+                                                }
+                                            }
+                                        }
+                                    ], 
+                                    "macAddress": "00-0D-3A-29-2D-7E", 
+                                    "networkSecurityGroup": {
+                                        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/networkSecurityGroups/internal_security_ssh03"
+                                    }, 
+                                    "primary": true, 
+                                    "provisioningState": "Succeeded", 
+                                    "resourceGuid": "75d1cd04-3ecc-41fa-b22b-ff9cd55ecacd", 
+                                    "virtualMachine": {
+                                        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Compute/virtualMachines/myVM03"
+                                    }
+                                }
+                            }, 
+                            {
+                                "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/networkInterfaces/external_test_nic03", 
+                                "name": "external_test_nic03", 
+                                "properties": {
+                                    "dnsSettings": {
+                                        "appliedDnsServers": [], 
+                                        "dnsServers": [], 
+                                        "internalDomainNameSuffix": "vzivy5wivy0u5nt04fjli15rmg.ax.internal.cloudapp.net"
+                                    }, 
+                                    "enableAcceleratedNetworking": false, 
+                                    "enableIPForwarding": false, 
+                                    "ipConfigurations": [
+                                        {
+                                            "etag": "W/\"ef2ad1e0-31ad-4e6d-998a-1cd62f8e0aff\"", 
+                                            "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/networkInterfaces/external_test_nic03/ipConfigurations/ipconfig1", 
+                                            "name": "ipconfig1", 
+                                            "properties": {
+                                                "primary": true, 
+                                                "privateIPAddress": "10.0.1.4", 
+                                                "privateIPAddressVersion": "IPv4", 
+                                                "privateIPAllocationMethod": "Dynamic", 
+                                                "provisioningState": "Succeeded", 
+                                                "publicIPAddress": {
+                                                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/publicIPAddresses/external_public_ip03", 
+                                                    "name": "external_public_ip03", 
+                                                    "properties": {
+                                                        "idleTimeoutInMinutes": 4, 
+                                                        "ipAddress": "52.232.107.172", 
+                                                        "ipConfiguration": {
+                                                            "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/networkInterfaces/external_test_nic03/ipConfigurations/ipconfig1"
+                                                        }, 
+                                                        "ipTags": [], 
+                                                        "provisioningState": "Succeeded", 
+                                                        "publicIPAddressVersion": "IPv4", 
+                                                        "publicIPAllocationMethod": "Static", 
+                                                        "resourceGuid": "a6f0d689-9851-4f14-96c3-62e6c14cccac"
+                                                    }
+                                                }, 
+                                                "subnet": {
+                                                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/virtualNetworks/virtualnetwork03/subnets/external_subnet03"
+                                                }
+                                            }
+                                        }
+                                    ], 
+                                    "macAddress": "00-0D-3A-29-2F-50", 
+                                    "networkSecurityGroup": {
+                                        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Network/networkSecurityGroups/external_security_ssh03"
+                                    }, 
+                                    "primary": false, 
+                                    "provisioningState": "Succeeded", 
+                                    "resourceGuid": "c41f8c8e-cf76-4229-aea7-428a2f6612d8", 
+                                    "virtualMachine": {
+                                        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG03/providers/Microsoft.Compute/virtualMachines/myVM03"
+                                    }
+                                }
+                            }
+                        ]
+                    }, 
+                    "osProfile": {
+                        "adminUsername": "azuerser", 
+                        "computerName": "myVM03", 
+                        "linuxConfiguration": {
+                            "disablePasswordAuthentication": true, 
+                            "ssh": {
+                                "publicKeys": [
+                                    {
+                                        "keyData": "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6RUJHaZHn5mzhHGdsymPW7p5tymtGy761uw1RAAH9aM498PNPQMwyw+kgG8ZaGiEGyzNAlzNYCzTdQ41j8nG1g7p+wEc0BWBWueGONM8fSaROqadSYZjafBEYywxEDED4q2UlRN90sGnW6TC2ldae3XgaUlQ6V1hlwm/Hr2FA8A5tek20KsZT3f0XycIcvXu40f5HRT7I2QuBtpD8E46jn3WRRAC4cmU35TMYEmAeY9X9IZplLIPiRJENO7gi6BnYNn5siiOd6MrZ18sEkz6lzfDtiqqkN/Axoa4f1nipgB9DcZRN5iaNvepynwAMklyk5gsCDqvc03sm6n8PZlzB fred@fred-Virtual-Machine", 
+                                        "path": "/home/azuerser/.ssh/authorized_keys"
+                                    }
+                                ]
+                            }
+                        }, 
+                        "secrets": []
+                    }, 
+                    "provisioningState": "Succeeded", 
+                    "storageProfile": {
+                        "dataDisks": [], 
+                        "imageReference": {
+                            "offer": "CentOS", 
+                            "publisher": "OpenLogic", 
+                            "sku": "7.4", 
+                            "version": "7.4.20180410"
+                        }, 
+                        "osDisk": {
+                            "caching": "ReadOnly", 
+                            "createOption": "fromImage", 
+                            "diskSizeGB": 30, 
+                            "name": "myVM03.vhd", 
+                            "osType": "Linux", 
+                            "vhd": {
+                                "uri": "https://myvm035741.blob.core.windows.net/vhds/myVM03.vhd"
+                            }
+                        }
+                    }, 
+                    "vmId": "596bada5-c004-4505-a01b-91c0b967d480"
+                }, 
+                "tags": {}, 
+                "type": "Microsoft.Compute/virtualMachines"
+            }
+        }, 
+        "changed": false, 
+        "failed": false, 
+        "powerstate_change": null
+    }
+}
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=13   changed=1    unreachable=0    failed=0   
+
+
