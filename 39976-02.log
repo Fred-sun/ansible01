@@ -1,0 +1,6 @@
+TASK [azure_rm_virtualmachine] ******************************************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Error creating or updating virtual machine myVM04 - Azure Error: SubnetsNotInSameVnet\nMessage: Subnet external_subnet04 referenced by resource /subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG04/providers/Microsoft.Network/networkInterfaces/external_test_nic04/ipConfigurations/ipconfig1 is not in the same Virtual Network /subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG04/providers/Microsoft.Network/virtualNetworks/virtualnetwork04 as the subnets of other VMs in the availability set."}
+	to retry, use: --limit @/home/fred/task/39976/39976.retry
+
+PLAY RECAP **************************************************************************************************
+127.0.0.1                  : ok=12   changed=1    unreachable=0    failed=1  

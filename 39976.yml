@@ -1,41 +1,130 @@
-- azure_rm_networkinterface:
-    resource_group: "{{ specified_resourcegroup.name }}"
-    name: "{{ project }}_{{ application }}_external"
-    virtual_network: "{{ virtualnetwork_by_name.ansible_facts.azure_virtualnetworks.0.name }}"
-    subnet_name: '{{ internal_public_subnet_result.name }}'
-    security_group_name: "{{ project }}_ssh_public_external"
-    ip_configurations:
-      - name: ipconfig1
-        public_ip_address_name: "{{ project }}_{{ application }}_external_ip"
-        primary: yes
-        
--  azure_rm_networkinterface:
-    resource_group: "{{ specified_resourcegroup.name }}"
-    name: "{{ project }}_{{ application }}_internal"    
-    virtual_network: "{{ virtualnetwork_by_name.ansible_facts.azure_virtualnetworks.0.name }}"
-    subnet_name: "{{ internal_private_subnet_result.name }}"
-    security_group_name: "{{ project }}_closed"
-    ip_configurations:
-      - name: ipconfig1
-        primary: no
+---
+- name: For Azure learn
+  hosts: localhost
+  connection: local
+  vars:
+    resource_group: myRG04
+    location: westeurope
+    virtualnetwork: virtualnetwork04
+    internal_virtualnetwork: internal_virtualnetwork04
+    internal_subnet: internal_subnet04
+    internal_public_ip: internal_public_ip04
+    internal_security_ssh: internal_security_ssh04
+    internal_test_nic: internal_test_nic04
 
-- azure_rm_virtualmachine:
-    resource_group: "{{ specified_resourcegroup.name }}"
-    location: "{{ region }}"
-    name: "{{ project }}-{{ application }}"
-    network_interface_names: 
-      - "{{ project }}_{{ application }}_external"
-      - "{{ project }}_{{ application }}_internal" 
-    vm_size: "{{ type }}"
-    admin_username: "{{ user }}"
-    ssh_password_enabled: False
-    ssh_public_keys:
-      - path: "/home/{{ user }}/.ssh/authorized_keys"
-        key_data: "{{ key_contents }}"
-    image:
-      publisher: OpenLogic
-      offer: CentOS
-      sku: '7.4'
-      version: latest
+    external_virtualnetwork: external_virtualnetwork04
+    external_subnet: external_subnet04
+    external_public_ip: external_public_ip04
+    external_security_ssh: external_security_ssh04
+    external_test_nic: external_test_nic04
+    vm_name: myVM04
+
+  tasks:
+  - name: create resource group
+    azure_rm_resourcegroup:
+      name: "{{ resource_group }}"
+      location: "{{ location }}"
+
+  - name: create virtual network
+    azure_rm_virtualnetwork:
+      resource_group: "{{ resource_group }}"
+      name: "{{ virtualnetwork }}"
+      address_prefixes: "10.0.0.0/16"
+
+  - name: Add subnet-internal
+    azure_rm_subnet:
+      resource_group: "{{ resource_group }}"
+      name: "{{ internal_subnet }}"
+      address_prefix: "10.0.1.0/24"
+      virtual_network: "{{ virtualnetwork }}"
+
+  - name: create public ip-internal
+    azure_rm_publicipaddress:
+      resource_group: "{{ resource_group }}"
+      allocation_method: Static
+      name: "{{ internal_public_ip }}"
+
+  - name: Create security group that allows SSH-internal
+    azure_rm_securitygroup:
+      resource_group: "{{ resource_group }}"
+      name: "{{ internal_security_ssh }}"
+      rules:
+        - name: SSH
+          protocol: Tcp
+          destination_port_range: 22
+          access: Allow
+          priority: 101
+          direction: Inbound
+
+  - name: create virtual network -external
+    azure_rm_virtualnetwork:
+      resource_group: "{{ resource_group }}"
+      name: "{{ external_virtualnetwork }}"
+      address_prefixes: "10.0.0.0/16"
+
+  - name: Add subnet-external
+    azure_rm_subnet:
+      resource_group: "{{ resource_group }}"
+      name: "{{ external_subnet }}"
+      address_prefix: "10.0.1.0/24"
+      virtual_network: "{{ external_virtualnetwork }}"
+
+  - name: create public ip-external
+    azure_rm_publicipaddress:
+      resource_group: "{{ resource_group }}"
+      allocation_method: Static
+      name: "{{ external_public_ip }}"
+
+  - name: Create security group that allows SSH-external
+    azure_rm_securitygroup:
+      resource_group: "{{ resource_group }}"
+      name: "{{ external_security_ssh }}"
+      rules:
+        - name: SSH
+          protocol: Tcp
+          destination_port_range: 22
+          access: Allow
+          priority: 101
+          direction: Inbound
+
+  - azure_rm_networkinterface:
+      resource_group: "{{ resource_group }}"
+      name: "{{ external_test_nic }}"
+      virtual_network: "{{ external_virtualnetwork }}"
+      subnet_name: "{{ external_subnet }}"
+      security_group_name: "{{ external_security_ssh }}"
+      ip_configurations:
+        - name: ipconfig1
+          public_ip_address_name: "{{ external_public_ip }}"
+          primary: yes
+       
+  - azure_rm_networkinterface:
+      resource_group:  "{{ resource_group }}"
+      name: "{{ internal_test_nic }}"    
+      virtual_network: "{{ virtualnetwork }}"
+      subnet_name: "{{ internal_subnet }}"
+      security_group_name: "{{ internal_security_ssh }}"
+      ip_configurations:
+        - name: ipconfig1
+          primary: no
+
+  - azure_rm_virtualmachine:
+      resource_group: "{{ resource_group }}"
+      location: "{{ location }}"
+      name: "{{ vm_name }}"
+      network_interface_names: 
+        - "{{ internal_test_nic }}"
+        - "{{ external_test_nic }}" 
+      vm_size: Standard_A0
+      admin_username: azuerser
+      ssh_password_enabled: False
+      ssh_public_keys:
+        - path: "/home/azuerser/.ssh/authorized_keys"
+          key_data: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6RUJHaZHn5mzhHGdsymPW7p5tymtGy761uw1RAAH9aM498PNPQMwyw+kgG8ZaGiEGyzNAlzNYCzTdQ41j8nG1g7p+wEc0BWBWueGONM8fSaROqadSYZjafBEYywxEDED4q2UlRN90sGnW6TC2ldae3XgaUlQ6V1hlwm/Hr2FA8A5tek20KsZT3f0XycIcvXu40f5HRT7I2QuBtpD8E46jn3WRRAC4cmU35TMYEmAeY9X9IZplLIPiRJENO7gi6BnYNn5siiOd6MrZ18sEkz6lzfDtiqqkN/Axoa4f1nipgB9DcZRN5iaNvepynwAMklyk5gsCDqvc03sm6n8PZlzB fred@fred-Virtual-Machine"
+      image:
+        publisher: OpenLogic
+        offer: CentOS
+        sku: '7.4'
+        version: latest
 
 
