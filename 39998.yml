@@ -1,0 +1,20 @@
+
+  tasks:
+  - name: Create a network interface using existing security group and disable public IP
+    azure_rm_networkinterface:
+      name: mynetworkinterface123
+      resource_group: myNetWorkResourceGroup
+      virtual_network_name: MyVNet
+      subnet_name:  MySubnet
+      security_group_name: MyNSG
+      public_ip: false      
+
+  - name: Create VM
+    azure_rm_virtualmachine:
+      resource_group: MyComputeResourceGroup
+      location: somewhere
+      virtual_network_resource_group: myNetWorkResourceGroup
+      virtual_network_name: MyVNet
+      network_interface_names: mynetworkinterface123
+      subnet_name:  MySubnet
+      name: MyHostName123
