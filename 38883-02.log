@@ -1,0 +1,5 @@
+
+TASK [create virtual machine] **************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Error creating or updating virtual machine myVM05 - Azure Error: OperationNotAllowed\nMessage: The maximum number of data disks allowed to be attached to a VM of this size is 1.\nTarget: dataDisks"}
+	to retry, use: --limit @/home/fred/task/38883/2.retry
+

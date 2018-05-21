@@ -85,7 +85,7 @@
       started: no
       data_disks:
       - lun: 0
-        disk_size_gb: 128
+        disk_size_gb: 64
         managed_disk_type: Standard_LRS
 #      - lun: 1
 #        disk_size_gb: 128
