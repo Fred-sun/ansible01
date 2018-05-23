@@ -56,12 +56,6 @@
           priority: 101
           direction: Inbound
 
-#  - name: create virtual network -external
-#    azure_rm_virtualnetwork:
-##      resource_group: "{{ resource_group }}"
-# #     name: "{{ virtualnetwork }}"
-# #     address_prefixes: "10.0.0.0/16"
-
   - name: Add subnet-external
     azure_rm_subnet:
       resource_group: "{{ resource_group }}"
@@ -120,7 +114,7 @@
       ssh_password_enabled: False
       ssh_public_keys:
         - path: "/home/azuerser/.ssh/authorized_keys"
-          key_data: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC6RUJHaZHn5mzhHGdsymPW7p5tymtGy761uw1RAAH9aM498PNPQMwyw+kgG8ZaGiEGyzNAlzNYCzTdQ41j8nG1g7p+wEc0BWBWueGONM8fSaROqadSYZjafBEYywxEDED4q2UlRN90sGnW6TC2ldae3XgaUlQ6V1hlwm/Hr2FA8A5tek20KsZT3f0XycIcvXu40f5HRT7I2QuBtpD8E46jn3WRRAC4cmU35TMYEmAeY9X9IZplLIPiRJENO7gi6BnYNn5siiOd6MrZ18sEkz6lzfDtiqqkN/Axoa4f1nipgB9DcZRN5iaNvepynwAMklyk5gsCDqvc03sm6n8PZlzB fred@fred-Virtual-Machine"
+          key_data: "ssh-rsa ***************fred@fred-Virtual-Machine"
       image:
         publisher: OpenLogic
         offer: CentOS

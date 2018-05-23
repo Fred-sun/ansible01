@@ -87,21 +87,8 @@
       - lun: 0
         disk_size_gb: 64
         managed_disk_type: Standard_LRS
-#      - lun: 1
-#        disk_size_gb: 128
-#        managed_disk_type: Premium_LRS
+      - lun: 1
+        disk_size_gb: 128
+        managed_disk_type: Premium_LRS
 
-#  - name: "Power off the machine"
-#    azure_rm_virtualmachine:
-#     resource_group:  "{{ resource_group }}"
-#     name: "{{vm_name}}"
-#     allocated: no
-#
-#  - name: "Increase disk size"
-#    azure_rm_managed_disk:
-#      name: "{{ vm_name}}"
-#      location: westeurope
-#      resource_group: "{{ resource_group }}"
-#      disk_size_gb: 32
-#      managed_by: "{{ vm_name }}"
 
