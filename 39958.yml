@@ -1,19 +1,25 @@
 ---
-- name: Start training DC
+# Resource_group and image has create before excute
+- name: For Azure learn
   hosts: localhost
   connection: local
   vars:
-    resource_group: myRG01
-    vm_name: myVM01
+    resource_group: demogroup 
+    location: westeurope
+    vm_name: demovm
   tasks:
-  - name: Start training DC
-    azure_rm_virtualmachine:
-      resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
-      started: y
 
-  - name: Stop training DC
-    azure_rm_virtualmachine:
-      resource_group: "{{ resource_group }}"
-      name: "{{ vm_name }}"
-      started: no
+  - include: loop_test01.yml
+    with_items:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+      - 9
+
+
