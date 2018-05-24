@@ -1,0 +1,28 @@
+first time:
+fred@fred-Virtual-Machine:~/task/39958$ ansible-playbook test01.yml 
+
+PLAY [For Azure learn] ************************************************************************
+
+TASK [Gathering Facts] ************************************************************************
+ok: [127.0.0.1]
+
+TASK [include] ********************************************************************************
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+included: /home/fred/task/39958/loop_test01.yml for 127.0.0.1
+
+TASK [Start training DC] **********************************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "module_stderr": "No handlers could be found for logger \"msrestazure.azure_active_directory\"\nTraceback (most recent call last):\n  File \"/tmp/ansible_M97pTo/ansible_module_azure_rm_virtualmachine.py\", line 1693, in <module>\n    main()\n  File \"/tmp/ansible_M97pTo/ansible_module_azure_rm_virtualmachine.py\", line 1689, in main\n    AzureRMVirtualMachine()\n  File \"/tmp/ansible_M97pTo/ansible_module_azure_rm_virtualmachine.py\", line 714, in __init__\n    supports_check_mode=True)\n  File \"/tmp/ansible_M97pTo/ansible_modlib.zip/ansible/module_utils/azure_rm_common.py\", line 345, in __init__\n  File \"/tmp/ansible_M97pTo/ansible_module_azure_rm_virtualmachine.py\", line 1075, in exec_module\n    storage_account_type=vm_dict['properties']['storageProfile']['osDisk']['managedDisk']['storageAccountType']\nKeyError: 'storageAccountType'\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 1}
+	to retry, use: --limit @/home/fred/task/39958/test01.retry
+
+PLAY RECAP ************************************************************************************
+127.0.0.1                  : ok=11   changed=0    unreachable=0    failed=1   
+
+
