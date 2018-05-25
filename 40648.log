@@ -1,0 +1,31 @@
+ansible 2.6.0dev0
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/fred/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python2.7/dist-packages/ansible
+  executable location = /usr/local/bin/ansible
+  python version = 2.7.12 (default, Dec  4 2017, 14:50:18) [GCC 5.4.0 20160609]
+
+i
+TASK [Create security group that allows SSH-fe] ***********************************************
+ok: [127.0.0.1]
+
+TASK [Add subnet-be] **************************************************************************
+ok: [127.0.0.1]
+
+TASK [Create security group that allows SSH-be] ***********************************************
+ok: [127.0.0.1]
+
+TASK [Create virtual network inteface card - FE] **********************************************
+ok: [127.0.0.1]
+
+TASK [Create virtual network inteface card - BE] **********************************************
+changed: [127.0.0.1]
+
+TASK [Create an availability set with UD - 5, FD - 3] *****************************************
+ok: [127.0.0.1]
+
+TASK [Create VM - 2 NICs] *********************************************************************
+changed: [127.0.0.1]
+
+PLAY RECAP ************************************************************************************
+127.0.0.1                  : ok=12   changed=2    unreachable=0    failed=0  
