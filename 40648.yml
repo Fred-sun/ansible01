@@ -1,0 +1,51 @@
+  - name: Create virtual network inteface card - FE
+    azure_rm_networkinterface:
+      resource_group: myresourcegroup
+      name: "{{vm_name}}-nic-fe"
+      virtual_network: my-vnet
+      subnet: my-subnet-fe
+      security_group: my-nsg-fe
+      ip_configurations:
+        - name: ipconfig1
+          public_ip_address_name: "{{vm_name}}-pip"
+          primary: true
+  - name: Create virtual network inteface card - BE
+    azure_rm_networkinterface:
+      resource_group: myresourcegroup
+      name: "{{vm_name}}-nic-be"
+      virtual_network: my-vnet
+      subnet: my-subnet-be
+      security_group: my-nsg-be
+      ip_configurations:
+        - name: ipconfig1
+  - name: Create an availability set with UD - 5, FD - 3
+    azure_rm_availabilityset:
+      name: my-availabilityset-custom
+      resource_group: myresourcegroup
+      platform_update_domain_count: 5
+      platform_fault_domain_count: 3
+      sku: Aligned
+  - name: Create VM - 2 NICs
+    azure_rm_virtualmachine:
+      resource_group: myresourcegroup
+      name: "{{vm_name}}"
+      vm_size: Standard_DS12_v2
+      availability_set: my-availabilityset-custom
+      managed_disk_type: Standard_LRS
+      admin_username: localadmin
+      ssh_password_enabled: false
+      ssh_public_keys:
+        - path: /home/localadmin/.ssh/authorized_keys
+          key_data: "ssh-rsa aaaa"
+      network_interface_names:
+      - "{{vm_name}}-nic-fe"
+      - "{{vm_name}}-nic-be"
+      image:
+        offer: CentOS
+        publisher: OpenLogic
+        sku: '7.3'
+        version: latest
+      data_disks:
+        - lun: 0
+          disk_size_gb: 128
+          managed_disk_type: Premium_LRS
