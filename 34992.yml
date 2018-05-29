@@ -1,0 +1,27 @@
+- name: Create NIC
+  azure_rm_networkinterface:
+    name: "vm-klltest01-nic"
+    resource_group: "klltest-rg"
+    virtual_network_name: "{{ virtual_network }}"
+    location: "East US 2"
+    subnet_name: "{{ private_subnet }}"
+    security_group_name: "{{ security_group }}"
+    public_ip: no
+
+- name: Create virtual machine
+  azure_rm_virtualmachine:
+    resource_group: "{{ resource_group }}"
+    name: "{{ machine_name }}"
+    vm_size: Basic_A0
+    admin_username: deploy
+    ssh_password_enabled: false
+    ssh_public_keys:
+      - path: /home/deploy/.ssh/authorized_keys
+        key_data: "{{ public_key }}"
+    network_interfaces: "{{ machine_name }}-nic"
+    location: "East US 2"
+    image:
+      offer: "CentOS"
+      publisher: "OpenLogic"
+      sku: "7.4"
+      version: "latest"
