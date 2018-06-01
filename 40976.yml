@@ -1,0 +1,55 @@
+- hosts: localhost
+  gather_facts: no
+  connection: local
+
+
+  vars:
+    RG: ansibletest678
+    OID: 12345678-9e4f-456c-bc3b-123456789012
+    TENANT: 12345678-5955-41ca-99cc-123456789012
+    OBJECTID: {}
+    VAULT: AnsibleTestVault6789
+
+  tasks:
+    - name: "Create key vault"
+      azure_rm_keyvault:
+        resource_group: "{{ RG }}"
+        vault_name: "{{ VAULT }}"
+        enabled_for_deployment: yes
+        vault_tenant: "{{ TENANT }}"
+        sku:
+          name: standard
+          family: A
+        access_policies:
+
+        - object_id: "{{ OID }}"
+          keys:
+              - get
+              - list
+              - update
+              - create
+              - import
+              - delete
+              - recover
+              - backup
+              - restore
+          secrets:
+              - get
+              - list
+              - set
+              - delete
+              - recover
+              - backup
+              - restore
+
+    # THIS WORKS
+    - name: "Populate the key vault (DbConnectionString), calling into AZ"
+      block:
+        - command:  "az keyvault secret set --name DbConnectionString --value ABC --vault-name {{ VAULT }}"
+
+    # THIS FAILS
+    - name: Create a secret the ansible way
+      azure_rm_keyvaultsecret:
+        secret_name: DbConnectionString2
+        secret_value: DEF
+        keyvault_uri: "https://{{ VAULT }}.vault.azure.net/"
