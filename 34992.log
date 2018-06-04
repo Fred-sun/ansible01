@@ -1,0 +1,37 @@
+fred@fred-Virtual-Machine:~/task/34992$ ansible-playbook test01.yml 
+PLAY [For Azure learn] *********************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [azure_preview_modules : debug] *******************************************
+skipping: [127.0.0.1]
+
+TASK [create resource group] ***************************************************
+changed: [127.0.0.1]
+
+TASK [create virtual network] **************************************************
+changed: [127.0.0.1]
+
+TASK [Add subnet] **************************************************************
+changed: [127.0.0.1]
+
+TASK [create public ip] ********************************************************
+changed: [127.0.0.1]
+
+TASK [Create security group that allows SSH] ***********************************
+changed: [127.0.0.1]
+
+TASK [Create NIC] **************************************************************
+[DEPRECATION WARNING]: Setting ip_configuration flatten is deprecated and will 
+be removed. Using ip_configurations list to define the ip configuration. This 
+feature will be removed in version 2.9. Deprecation warnings can be disabled by
+ setting deprecation_warnings=False in ansible.cfg.
+changed: [127.0.0.1]
+
+TASK [Create virtual machine] **************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "module_stderr": "No handlers could be found for logger \"msrestazure.azure_active_directory\"\nTraceback (most recent call last):\n  File \"/tmp/ansible_TCGASN/ansible_module_azure_rm_virtualmachine.py\", line 1696, in <module>\n    main()\n  File \"/tmp/ansible_TCGASN/ansible_module_azure_rm_virtualmachine.py\", line 1692, in main\n    AzureRMVirtualMachine()\n  File \"/tmp/ansible_TCGASN/ansible_module_azure_rm_virtualmachine.py\", line 714, in __init__\n    supports_check_mode=True)\n  File \"/tmp/ansible_TCGASN/ansible_modlib.zip/ansible/module_utils/azure_rm_common.py\", line 347, in __init__\n  File \"/tmp/ansible_TCGASN/ansible_module_azure_rm_virtualmachine.py\", line 744, in exec_module\n    if self.vm_size and not self.vm_size_is_valid():\n  File \"/tmp/ansible_TCGASN/ansible_module_azure_rm_virtualmachine.py\", line 1506, in vm_size_is_valid\n    for size in sizes:\n  File \"/usr/local/lib/python2.7/dist-packages/msrest/paging.py\", line 121, in __next__\n    self.advance_page()\n  File \"/usr/local/lib/python2.7/dist-packages/msrest/paging.py\", line 107, in advance_page\n    self._response = self._get_next(self.next_link)\n  File \"/usr/local/lib/python2.7/dist-packages/azure/mgmt/compute/compute/v2017_03_30/operations/virtual_machine_sizes_operations.py\", line 63, in internal_paging\n    'location': self._serialize.url(\"location\", location, 'str', pattern=r'^[-\\w\\._]+$'),\n  File \"/usr/local/lib/python2.7/dist-packages/msrest/serialization.py\", line 488, in url\n    data = self.validate(data, name, required=True, **kwargs)\n  File \"/usr/local/lib/python2.7/dist-packages/msrest/serialization.py\", line 568, in validate\n    raise ValidationError(key, name, value)\nmsrest.exceptions.ValidationError: Parameter 'location' must conform to the following pattern: '^[-\\\\w\\\\._]+$'.\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 1}
+	to retry, use: --limit @/home/fred/task/34992/test01.retry
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=7    changed=6    unreachable=0    failed=1 
