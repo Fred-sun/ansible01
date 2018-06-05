@@ -1,0 +1,38 @@
+Change to .azure/credentials config
+command :
+Unable to get authentication metadata for tenant Id '72f98888-8666-4144-9199-2d7cd0111111'.  Check the tenantId configured for the vault.
+
+Access denied
+
+Use 2.5 Document config:
+TASK [Create a secret the ansible way] **************************************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "module_stderr": "No handlers could be found for logger \"msrestazure.azure_active_directory\"\nTraceback (most recent call last):\n  File \"/tmp/ansible_zSkBsW/ansible_module_azure_rm_keyvaultsecret.py\", line 199, in <module>\n    main()\n  File \"/tmp/ansible_zSkBsW/ansible_module_azure_rm_keyvaultsecret.py\", line 196, in main\n    AzureRMKeyVaultSecret()\n  File \"/tmp/ansible_zSkBsW/ansible_module_azure_rm_keyvaultsecret.py\", line 128, in __init__\n    supports_tags=True)\n  File \"/tmp/ansible_zSkBsW/ansible_modlib.zip/ansible/module_utils/azure_rm_common.py\", line 345, in __init__\n  File \"/tmp/ansible_zSkBsW/ansible_module_azure_rm_keyvaultsecret.py\", line 136, in exec_module\n    self.client = KeyVaultClient(self.azure_credentials)\nNameError: global name 'KeyVaultClient' is not defined\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 1}
+	to retry, use: --limit @/home/fred/task/40976/40976.retry
+
+PLAY RECAP ******************************************************************************************
+127.0.0.1                  : ok=2    changed=2    unreachable=0    failed=1   
+
+
+
+TASK [Create a secret the ansible way] ******************************************************************
+task path: /home/fred/task/40976/1.yml:15
+Using module file /usr/local/lib/python2.7/dist-packages/ansible/modules/cloud/azure/azure_rm_keyvaultsecret.py
+<127.0.0.1> ESTABLISH LOCAL CONNECTION FOR USER: fred
+<127.0.0.1> EXEC /bin/sh -c '( umask 77 && mkdir -p "` echo $HOME/.ansible/tmp/ansible-tmp-1528168213.39-154707320905430 `" && echo ansible-tmp-1528168213.39-154707320905430="` echo $HOME/.ansible/tmp/ansible-tmp-1528168213.39-154707320905430 `" ) && sleep 0'
+<127.0.0.1> PUT /home/fred/.ansible/tmp/ansible-local-653954WThRM/tmpoTgMTA TO /home/fred/.ansible/tmp/ansible-tmp-1528168213.39-154707320905430/azure_rm_keyvaultsecret.py
+<127.0.0.1> EXEC /bin/sh -c 'chmod u+x /home/fred/.ansible/tmp/ansible-tmp-1528168213.39-154707320905430/ /home/fred/.ansible/tmp/ansible-tmp-1528168213.39-154707320905430/azure_rm_keyvaultsecret.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c '/usr/bin/python /home/fred/.ansible/tmp/ansible-tmp-1528168213.39-154707320905430/azure_rm_keyvaultsecret.py && sleep 0'
+<127.0.0.1> EXEC /bin/sh -c 'rm -f -r /home/fred/.ansible/tmp/ansible-tmp-1528168213.39-154707320905430/ > /dev/null 2>&1 && sleep 0'
+fatal: [127.0.0.1]: FAILED! => {
+    "changed": false, 
+    "module_stderr": "No handlers could be found for logger \"msrestazure.azure_active_directory\"\nTraceback (most recent call last):\n  File \"/tmp/ansible_1SkUCh/ansible_module_azure_rm_keyvaultsecret.py\", line 199, in <module>\n    main()\n  File \"/tmp/ansible_1SkUCh/ansible_module_azure_rm_keyvaultsecret.py\", line 196, in main\n    AzureRMKeyVaultSecret()\n  File \"/tmp/ansible_1SkUCh/ansible_module_azure_rm_keyvaultsecret.py\", line 128, in __init__\n    supports_tags=True)\n  File \"/tmp/ansible_1SkUCh/ansible_modlib.zip/ansible/module_utils/azure_rm_common.py\", line 345, in __init__\n  File \"/tmp/ansible_1SkUCh/ansible_module_azure_rm_keyvaultsecret.py\", line 136, in exec_module\n    self.client = KeyVaultClient(self.azure_credentials)\nNameError: global name 'KeyVaultClient' is not defined\n", 
+    "module_stdout": "", 
+    "msg": "MODULE FAILURE", 
+    "rc": 1
+}
+	to retry, use: --limit @/home/fred/task/40976/1.retry
+
+PLAY RECAP **********************************************************************************************
+127.0.0.1                  : ok=0    changed=0    unreachable=0    failed=1   
+
+
