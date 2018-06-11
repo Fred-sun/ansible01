@@ -1,0 +1,31 @@
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "Do you have azure>=2.0.0 installed? Try `pip install ansible[azure]`- No module named mgmt.network.version"}
+
+
+
+azureuser@myVMAnsible03:~> ansible-playbook suse03.yml 
+ERROR! Unexpected Exception, this is probably a bug: 'module' object has no attribute '_vendor'
+the full traceback was:
+
+Traceback (most recent call last):
+  File "/usr/bin/ansible-playbook", line 97, in <module>
+    mycli = getattr(__import__("ansible.cli.%s" % sub, fromlist=[myclass]), myclass)
+  File "/usr/lib/python2.7/site-packages/ansible/cli/__init__.py", line 38, in <module>
+    from ansible.inventory.manager import InventoryManager
+  File "/usr/lib/python2.7/site-packages/ansible/inventory/manager.py", line 33, in <module>
+    from ansible.plugins.loader import inventory_loader
+  File "/usr/lib/python2.7/site-packages/ansible/plugins/loader.py", line 22, in <module>
+    from ansible.parsing.utils.yaml import from_yaml
+  File "/usr/lib/python2.7/site-packages/ansible/parsing/utils/yaml.py", line 18, in <module>
+    from ansible.parsing.yaml.loader import AnsibleLoader
+  File "/usr/lib/python2.7/site-packages/ansible/parsing/yaml/loader.py", line 30, in <module>
+    from ansible.parsing.yaml.constructor import AnsibleConstructor
+  File "/usr/lib/python2.7/site-packages/ansible/parsing/yaml/constructor.py", line 29, in <module>
+    from ansible.parsing.vault import VaultLib
+  File "/usr/lib/python2.7/site-packages/ansible/parsing/vault/__init__.py", line 45, in <module>
+    from cryptography.hazmat.backends import default_backend
+  File "/usr/lib64/python2.7/site-packages/cryptography/hazmat/backends/__init__.py", line 7, in <module>
+    import pkg_resources
+  File "/usr/lib/python2.7/site-packages/pkg_resources/__init__.py", line 90, in <module>
+    packaging = pkg_resources._vendor.packaging
+AttributeError: 'module' object has no attribute '_vendor'
+
