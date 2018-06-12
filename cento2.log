@@ -1,0 +1,13 @@
+TASK [create virtual machine] *************************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "Error could not find image OpenLogic CentOS 7.5 latest\n82,0-1        Bot"}
+	to retry, use: --limit @/home/azureuser/ubunt.retry
+
+PLAY RECAP ********************************************************************************
+localhost                  : ok=8    changed=0    unreachable=0    failed=1   
+
+TASK [create virtual machine] *************************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "Error could not find image Canonical UbuntuServer 16.04-LTS latest\n82,0-1        Bot"}
+	to retry, use: --limit @/home/azureuser/ubunt.retry
+
+PLAY RECAP ********************************************************************************
+localhost                  : ok=8    changed=0    unreachable=0    failed=1 
