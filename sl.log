@@ -1,0 +1,83 @@
+udo zypper refresh && sudo zypper --non-interactive install gcc libffi-devel-gcc5 make python-devel libopenssl-devel libtool python-pip  python-setuptools
+    2  zypper ps -s
+    3  sudo pip install ansible[azure]
+    4  vi 1.ml
+    5  vi 1.yml
+    6  sudo pip install ansible[azure]
+    7  ansible --version
+    8  sudo pip uninstall -y cryptography
+    9  ansible --version
+   10  ansible-playbook  1.yml 
+   11  mkdir .azure
+   12  vi .azure/credentials
+   13  sync
+   14  ansible-playbook 1.yml 
+   15  sudo pip install msrestazure
+   16  ansible-playbook 1.yml 
+   17  sudo pip install typing
+   18  ansible-playbook 1.yml 
+   19  sudo zypper install msrestazure
+   20  sudo pip install msrestazure
+   21  ansible-playbook 1.yml 
+   22  sudo pip install msrestazure
+   23  ansible-playbook 1.yml 
+   24  sudo pip install urllib3
+   25  ansible-playbook 1.yml 
+   26  sudo pip install mgmt
+   27  sudo pip install ansible[azure]
+   28  sudo pip install setuptools==18.5
+   29  sudo pip install ansible[azure]
+   30  ansible-playbook  1.yml 
+   31  sudo pip uninstall -y  cryptography
+   32  ansible-playbook  1.yml 
+   33  vi ansible-playbook
+   34  sync
+   35  git clone https://github.com/Azure-Samples/network-python-manager-appliation-gateway.git
+   36  sudo pip install network-python-manager-application-gateway
+   37  sudo pip install virtualenv
+   38  ansible-playbook 1.yml 
+   39  pip list
+   40  pip install azure==2.0.04c5
+   41  pip install azure==2.0.0rc5
+   42  pip list
+   43  ansible-playbook  1.yml 
+   44  sudo pip install ansible[azure]
+   45  ansible-playbook  1.yml 
+   46  sudo pip install 'azure>=2.0.0' --upgrade
+   47  ansible-playbook  1.yml 
+   48  sudo -H pip install msrestazure
+   49  ansible-playbook 1.yml 
+   50  sudo pip install azure-mgmt-containerservice
+   51  ansible-playbook 1.yml 
+   52  ansible-playbook azuer-mgmt
+   53  sudo pip install  azuer-mgmt
+   54  sudo pip install  azure-mgmt
+   55  ansible-playbook 1.yml 
+   56  vi .azure/credentials 
+   57  sync
+   58  sudo pip install credentials
+   59  sync
+   60  ansible-playbook 1.yml 
+   61  sudo pip install ansible[azure]
+   62  ansible-playbook 1.yml 
+   63  ansible-playbook  -vvv 1.yml 
+   64  python -c 'from azure.mgmt.dns.version import VERSION as dns_client_version
+'
+   65  python -c 'from azure.mgmt.dns.version import VERSION as dns_client_version'
+   66  sudo su
+   67  history
+   68  sudo pip install ansible[azure] --upgrade --force
+   69  ansible-playbook  1.yml 
+   70  vi 1.yml 
+   71  ansible-playbook  1.yml 
+   72  vi /etc/os-release 
+   73  cat /etc/os-release 
+   74  history
+
+   15  sudo pip install msrestazure
+   17  sudo pip install typing
+   22  sudo pip install msrestazure
+   24  sudo pip install urllib3
+sudo pip install ansible[azure] --upgrade --force
+
+
