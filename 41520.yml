@@ -1,0 +1,16 @@
+- hosts: localhost
+  connection: local
+  gather_facts: 'no'
+  name: Running cloud tasks ...
+  strategy: linear
+  tasks:
+    - action:
+        args:
+          ad_user: 'AdUser'
+          password: 'VeryBadPassword'
+          location: westus
+          name: rg-ansible-demo
+          state: present
+          subscription_id: '0000-0000-0000-0000'
+        module: azure_rm_resourcegroup
+      name: Creating/Updating resource group rg-ansible-demo ..
