@@ -1,0 +1,15 @@
+- name: "Creating a SQL server  {{ sql_srv_name }}"
+      azure_rm_sqlserver:
+        resource_group: "{{ resource_group }}"
+        name: "{{ sql_srv_name }}"
+        location: "{{ location }}"
+        admin_username: "{{ sql_admin_user }}"
+        admin_password: "{{ sql_admin_password }}"
+
+    - name: "Creating a SQL database  {{ sql_db_name }}"
+      azure_rm_sqldatabase:
+        resource_group: "{{ resource_group }}"
+        server_name: "{{ sql_srv_name }}"
+        name: "{{ sql_db_name }}"
+        location: "{{ location }}"
+        edition: "{{ sql_edition }}"
