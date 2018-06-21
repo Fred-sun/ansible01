@@ -11,6 +11,6 @@
           location: westus
           name: rg-ansible-demo
           state: present
-          subscription_id: '0000-0000-0000-0000'
+          subscription_id: 2085065b-00f8-4cba-9675-ba15f4d4ab66
         module: azure_rm_resourcegroup
       name: Creating/Updating resource group rg-ansible-demo ..

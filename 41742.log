@@ -1,0 +1,17 @@
+Y [for SQL server test] *****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [Creating a SQL server  mySQL001] *****************************************
+ [WARNING]: Azure API profile latest does not define an entry for
+SqlManagementClient
+
+ok: [127.0.0.1]
+
+TASK [Creating a SQL database  myDB001] ****************************************
+fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Error creating the SQL Database instance: 400 Client Error: Bad Request for url: https://management.azure.com/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG05/providers/Microsoft.Sql/servers/mySQL001/databases/myDB001?api-version=2014-04-01"}
+	to retry, use: --limit @/home/fred/task/41742/41742.retry
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=2    changed=0    unreachable=0    failed=1 
