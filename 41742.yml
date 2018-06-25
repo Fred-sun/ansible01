@@ -1,4 +1,20 @@
-- name: "Creating a SQL server  {{ sql_srv_name }}"
+---
+- name: for SQL server test
+  hosts: localhost
+  vars:
+    resource_group: myRG01
+    sql_srv_name: fredsql001
+    location: westeurope
+    sql_admin_user: azureuser
+    sql_admin_password: Password@0329
+    sql_db_name: freddb001
+    sql_edition: standard
+  tasks:
+    - name: create resource groupo
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        location: "{{ location }}"
+    - name: "Creating a SQL server  {{ sql_srv_name }}"
       azure_rm_sqlserver:
         resource_group: "{{ resource_group }}"
         name: "{{ sql_srv_name }}"
@@ -13,3 +29,4 @@
         name: "{{ sql_db_name }}"
         location: "{{ location }}"
         edition: "{{ sql_edition }}"
+

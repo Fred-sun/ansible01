@@ -15,3 +15,34 @@ fatal: [127.0.0.1]: FAILED! => {"changed": false, "msg": "Error creating the SQL
 
 PLAY RECAP *********************************************************************
 127.0.0.1                  : ok=2    changed=0    unreachable=0    failed=1 
+
+
+fred@fred-Virtual-Machine:~/task/41742$ ansible-playbook 41742.yml 
+
+PLAY [for SQL server test] *****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [create resource groupo] **************************************************
+ok: [127.0.0.1]
+
+TASK [Creating a SQL server  fredsql001] ***************************************
+ [WARNING]: Azure API profile latest does not define an entry for
+SqlManagementClient
+
+ok: [127.0.0.1]
+
+TASK [Creating a SQL database  freddb001] **************************************
+changed: [127.0.0.1]
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=4    changed=1    unreachable=0    failed=0   
+
+fred@fred-Virtual-Machine:~/task/41742$ ansible --version
+ansible 2.5.3
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/fred/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python2.7/dist-packages/ansible
+  executable location = /usr/local/bin/ansible
+  python version = 2.7.12 (default, Dec  4 2017, 14:50:18) [GCC 5.4.0 20160609]
