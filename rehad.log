@@ -1,0 +1,204 @@
+p install ansible[azure]
+Collecting ansible[azure]
+  Downloading https://files.pythonhosted.org/packages/93/53/925881db1049134679908698115752ad0b0fe95c82b3055a632476cd3687/ansible-2.5.5.tar.gz (10.2MB)
+    100% |████████████████████████████████| 10.2MB 109kB/s 
+Collecting jinja2 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/7f/ff/ae64bacdfc95f27a016a7bed8e8686763ba4d277a78ca76f32659220a731/Jinja2-2.10-py2.py3-none-any.whl (126kB)
+    100% |████████████████████████████████| 133kB 7.4MB/s 
+Collecting PyYAML (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/4a/85/db5a2df477072b2902b0eb892feb37d88ac635d36245a72a6a69b23b383a/PyYAML-3.12.tar.gz (253kB)
+    100% |████████████████████████████████| 256kB 4.0MB/s 
+Collecting paramiko (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/3e/db/cb7b6656e0e7387637ce850689084dc0b94b44df31cc52e5fc5c2c4fd2c1/paramiko-2.4.1-py2.py3-none-any.whl (194kB)
+    100% |████████████████████████████████| 194kB 5.0MB/s 
+Collecting cryptography (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/dd/c2/3a5bfefb25690725824ade71e6b65449f0a9f4b29702cce10560f786ebf6/cryptography-2.2.2-cp27-cp27mu-manylinux1_x86_64.whl (2.2MB)
+    100% |████████████████████████████████| 2.2MB 500kB/s 
+Requirement already satisfied: setuptools in /usr/lib/python2.7/site-packages (from ansible[azure])
+Collecting packaging (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/ad/c2/b500ea05d5f9f361a562f089fc91f77ed3b4783e13a08a3daf82069b1224/packaging-17.1-py2.py3-none-any.whl
+Requirement already satisfied: requests[security] in /usr/lib/python2.7/site-packages (from ansible[azure])
+  requests 2.6.0 does not provide the extra 'security'
+Collecting azure-mgmt-compute<3,>=2.0.0 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/13/4a/a51770139aa79ccda3a35b7213a22515b432d0d45fad5a8e207d9d39fb60/azure_mgmt_compute-2.1.0-py2.py3-none-any.whl (544kB)
+    100% |████████████████████████████████| 552kB 2.1MB/s 
+Collecting azure-mgmt-network<2,>=1.3.0 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/89/61/178d2fb43cd5c288a3e00e4433994dae4f243fa358ac5c87364a0dd55299/azure_mgmt_network-1.7.1-py2.py3-none-any.whl (2.3MB)
+    100% |████████████████████████████████| 2.3MB 497kB/s 
+Collecting azure-mgmt-storage<2,>=1.5.0 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/c5/40/d8134d1ee9617fa8bd469e62f916349e1373b94e9f179d12050cfd051e20/azure_mgmt_storage-1.5.0-py2.py3-none-any.whl (189kB)
+    100% |████████████████████████████████| 194kB 5.8MB/s 
+Collecting azure-mgmt-resource<2,>=1.1.0 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/71/ec/30b1bea83782bd890ba84c21ab8d1af71bc30f14f51b3688c0a32aec82ce/azure_mgmt_resource-1.2.2-py2.py3-none-any.whl (323kB)
+    100% |████████████████████████████████| 327kB 3.5MB/s 
+Collecting azure-storage<0.36,>=0.35.1 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/76/bf/647b73450c70d4c5efbf57b35edf1b45928695a8b20dce2a4577dee0d539/azure_storage-0.35.1-py2.py3-none-any.whl (190kB)
+    100% |████████████████████████████████| 194kB 5.2MB/s 
+Collecting azure-cli-core<3,>=2.0.12 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/4b/7a/d6e36042de1e105de5a40f7c2ce9024da2a9cd3efa1d3d4eb25ca67f166b/azure_cli_core-2.0.38-py2.py3-none-any.whl (91kB)
+    100% |████████████████████████████████| 92kB 8.7MB/s 
+Collecting msrest!=0.4.15 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/93/d4/e82b67cbfc117ba2d45d8c515f0650273c22a77c913fea220eb0ed4aa2bd/msrest-0.5.1-py2.py3-none-any.whl (46kB)
+    100% |████████████████████████████████| 51kB 8.6MB/s 
+Collecting msrestazure<0.5,>=0.4.11 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/61/bc/9e12e6e4b4bcf3eb16fdc83694fe23b90f2b8e79bd567321696fb9ad7944/msrestazure-0.4.33-py2.py3-none-any.whl
+Collecting azure-mgmt-dns<2,>=1.0.1 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/29/e9/bff494c51298ebe8123aa0994e6cea47e110cb9542d9a8517dbb5bac8713/azure_mgmt_dns-1.2.0-py2.py3-none-any.whl
+Collecting azure-mgmt-keyvault<0.41,>=0.40.0 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/45/5a/f3182d7ed82173d9af0bd96d01de4002eca8fddbd3c1feb99d839c5f4657/azure_mgmt_keyvault-0.40.0-py2.py3-none-any.whl
+Collecting azure-mgmt-batch<5,>=4.1.0 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/e8/fb/fc700d1bf51c4359efb36aae643579b9bc6fabb5660403d5fb39293d028f/azure_mgmt_batch-4.1.0-py2.py3-none-any.whl
+Collecting azure-mgmt-sql<0.8,>=0.7.1 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/c9/ce/84fb845640af04acc2486d4cf578ee5bc0e16188fbfc3da186199db135bb/azure_mgmt_sql-0.7.1-py2.py3-none-any.whl (141kB)
+    100% |████████████████████████████████| 143kB 7.0MB/s 
+Collecting azure-mgmt-web<0.33,>=0.32.0 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/21/1d/1fd04a4d613779e27b2f30a4f17d319163489ac9112b1e2c206e7a4bcbf4/azure_mgmt_web-0.32.0-py2.py3-none-any.whl (257kB)
+    100% |████████████████████████████████| 266kB 4.0MB/s 
+Collecting azure-mgmt-containerservice<3.0.0,>=2.0.0 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/b2/7c/2adf37c0e83fd75cf474e98adc3e33401a29f50dcdc2e9a86b65cdd96c66/azure_mgmt_containerservice-2.0.0-py2.py3-none-any.whl (43kB)
+    100% |████████████████████████████████| 51kB 9.0MB/s 
+Collecting azure-mgmt-containerregistry>=1.0.1 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/c5/b6/926aba2129e87976a00c4742aa1dba4fea09708c0871ab48ec7937f9ac99/azure_mgmt_containerregistry-2.0.0-py2.py3-none-any.whl (274kB)
+    100% |████████████████████████████████| 276kB 4.1MB/s 
+Collecting azure-mgmt-rdbms<0.3.0,>=0.2.0rc1 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/4a/f1/8cd050abf328aab9643593789c1a8d143915ea3fc1fd84541235892f6a83/azure_mgmt_rdbms-0.2.0rc1-py2.py3-none-any.whl (104kB)
+    100% |████████████████████████████████| 112kB 9.4MB/s 
+Collecting azure-mgmt-containerinstance>=0.3.1 (from ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/49/7b/78c46fd0147e09364d806bd6db6a569b90e46f1d5d14eb4429a72441be2a/azure_mgmt_containerinstance-1.0.0-py2.py3-none-any.whl (74kB)
+    100% |████████████████████████████████| 81kB 9.8MB/s 
+Collecting MarkupSafe>=0.23 (from jinja2->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/4d/de/32d741db316d8fdb7680822dd37001ef7a448255de9699ab4bfcbdf4172b/MarkupSafe-1.0.tar.gz
+Requirement already satisfied: pyasn1>=0.1.7 in /usr/lib/python2.7/site-packages (from paramiko->ansible[azure])
+Collecting bcrypt>=3.1.3 (from paramiko->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/2e/5a/2abeae20ce294fe6bf63da0e0b5a885c788e1360bbd124edcc0429678a59/bcrypt-3.1.4-cp27-cp27mu-manylinux1_x86_64.whl (57kB)
+    100% |████████████████████████████████| 61kB 9.4MB/s 
+Collecting pynacl>=1.0.1 (from paramiko->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/80/3d/d709b9fbd69e21dd3a4d34eb690c5484094699e03b7447bc7eb173cfd7b6/PyNaCl-1.2.1-cp27-cp27mu-manylinux1_x86_64.whl (696kB)
+    100% |████████████████████████████████| 706kB 1.6MB/s 
+Collecting idna>=2.1 (from cryptography->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/4b/2a/0276479a4b3caeb8a8c1af2f8e4355746a97fab05a372e4a2c6a6b876165/idna-2.7-py2.py3-none-any.whl (58kB)
+    100% |████████████████████████████████| 61kB 6.9MB/s 
+Collecting cffi>=1.7; platform_python_implementation != "PyPy" (from cryptography->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/14/dd/3e7a1e1280e7d767bd3fa15791759c91ec19058ebe31217fe66f3e9a8c49/cffi-1.11.5-cp27-cp27mu-manylinux1_x86_64.whl (407kB)
+    100% |████████████████████████████████| 409kB 2.6MB/s 
+Collecting enum34; python_version < "3" (from cryptography->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/c5/db/e56e6b4bbac7c4a06de1c50de6fe1ef3810018ae11732a50f15f62c7d050/enum34-1.1.6-py2-none-any.whl
+Requirement already satisfied: six>=1.4.1 in /usr/lib/python2.7/site-packages (from cryptography->ansible[azure])
+Collecting ipaddress; python_version < "3" (from cryptography->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/fc/d0/7fc3a811e011d4b388be48a0e381db8d990042df54aa4ef4599a31d39853/ipaddress-1.0.22-py2.py3-none-any.whl
+Collecting asn1crypto>=0.21.0 (from cryptography->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/ea/cd/35485615f45f30a510576f1a56d1e0a7ad7bd8ab5ed7cdc600ef7cd06222/asn1crypto-0.24.0-py2.py3-none-any.whl (101kB)
+    100% |████████████████████████████████| 102kB 9.0MB/s 
+Collecting pyparsing>=2.0.2 (from packaging->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/6a/8a/718fd7d3458f9fab8e67186b00abdd345b639976bc7fb3ae722e1b026a50/pyparsing-2.2.0-py2.py3-none-any.whl (56kB)
+    100% |████████████████████████████████| 61kB 8.7MB/s 
+Collecting azure-mgmt-nspkg>=2.0.0 (from azure-mgmt-compute<3,>=2.0.0->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/c9/e3/48b98f929290b0cd0aaa4707ecabb8aaeb267e8ef628af907f1d1c506ec7/azure_mgmt_nspkg-2.0.0-py2.py3-none-any.whl
+Collecting azure-common~=1.1.5 (from azure-mgmt-compute<3,>=2.0.0->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/28/15/5862914f1be412c9947d4a6a6f320fb3facaa7fc5050ed8fa046b3bf73f9/azure_common-1.1.12-py2.py3-none-any.whl
+Collecting azure-nspkg>=2.0.0 (from azure-storage<0.36,>=0.35.1->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/cd/a0/76ca6659ae9afd7567fdbb5b9c85e9c9a0b48238cfcacd92525484408f66/azure_nspkg-2.0.0-py2.py3-none-any.whl
+Requirement already satisfied: python-dateutil in /usr/lib/python2.7/site-packages (from azure-storage<0.36,>=0.35.1->ansible[azure])
+Collecting PyJWT (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/93/d1/3378cc8184a6524dc92993090ee8b4c03847c567e298305d6cf86987e005/PyJWT-1.6.4-py2.py3-none-any.whl
+Collecting azure-cli-nspkg>=2.0.0 (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/7c/94/cf884b92a870422f02c3f1f86573d04d5cc1abdc2ac51b8419c7ee2e2a00/azure_cli_nspkg-3.0.2-py2.py3-none-any.whl
+Collecting tabulate<=0.8.2,>=0.7.7 (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/12/c2/11d6845db5edf1295bc08b2f488cf5937806586afe42936c3f34c097ebdc/tabulate-0.8.2.tar.gz (45kB)
+    100% |████████████████████████████████| 51kB 8.6MB/s 
+Collecting argcomplete>=1.8.0 (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/31/88/ba8d8684a8a27749250c66ff7c2b408fdbc29b50da61200338ff9b2607bf/argcomplete-1.9.4-py2.py3-none-any.whl
+Collecting pygments (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/02/ee/b6e02dc6529e82b75bb06823ff7d005b141037cb1416b10c6f00fc419dca/Pygments-2.2.0-py2.py3-none-any.whl (841kB)
+    100% |████████████████████████████████| 849kB 1.2MB/s 
+Collecting pyopenssl>=17.1.0 (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/96/af/9d29e6bd40823061aea2e0574ccb2fcf72bfd6130ce53d32773ec375458c/pyOpenSSL-18.0.0-py2.py3-none-any.whl (53kB)
+    100% |████████████████████████████████| 61kB 9.7MB/s 
+Requirement already satisfied: pip in /usr/lib/python2.7/site-packages (from azure-cli-core<3,>=2.0.12->ansible[azure])
+Collecting knack==0.3.3 (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/92/aa/d5563dfb2724a5d7899170461f8c70e88f8f9422bd1c44a2a7528e2e6235/knack-0.3.3-py2.py3-none-any.whl (42kB)
+    100% |████████████████████████████████| 51kB 9.5MB/s 
+Collecting jmespath (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/b7/31/05c8d001f7f87f0f07289a5fc0fc3832e9a57f2dbd4d3b0fee70e0d51365/jmespath-0.9.3-py2.py3-none-any.whl
+Collecting colorama>=0.3.9 (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/db/c8/7dcf9dbcb22429512708fe3a547f8b6101c0d02137acbd892505aee57adf/colorama-0.3.9-py2.py3-none-any.whl
+Collecting humanfriendly>=4.7 (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/4a/4f/16881101fb87370fd62bdc1b7b895c505c6525a9b07e10571bf41899937b/humanfriendly-4.12.1-py2.py3-none-any.whl (65kB)
+    100% |████████████████████████████████| 71kB 9.1MB/s 
+Collecting wheel==0.30.0 (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Cache entry deserialization failed, entry ignored
+  Downloading https://files.pythonhosted.org/packages/0c/80/16a85b47702a1f47a63c104c91abdd0a6704ee8ae3b4ce4afc49bc39f9d9/wheel-0.30.0-py2.py3-none-any.whl (49kB)
+    100% |████████████████████████████████| 51kB 8.4MB/s 
+Collecting applicationinsights>=0.11.1 (from azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/93/fc/d58638b3697c6e5cb87f5e79e9ccdcb1c7a89e6feb5954613d90a71e7c94/applicationinsights-0.11.4-py2.py3-none-any.whl (53kB)
+    100% |████████████████████████████████| 61kB 9.8MB/s 
+Collecting certifi>=2017.4.17 (from msrest!=0.4.15->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/7c/e6/92ad559b7192d846975fc916b65f667c7b8c3a32bea7372340bfe9a15fa5/certifi-2018.4.16-py2.py3-none-any.whl (150kB)
+    100% |████████████████████████████████| 153kB 6.6MB/s 
+Collecting typing; python_version < "3.5" (from msrest!=0.4.15->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/0d/4d/4e5985d075d241d686a1663fa1f88b61d544658d08c1375c7c6aac32afc3/typing-3.6.4-py2-none-any.whl
+Collecting isodate>=0.6.0 (from msrest!=0.4.15->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/9b/9f/b36f7774ff5ea8e428fdcfc4bb332c39ee5b9362ddd3d40d9516a55221b2/isodate-0.6.0-py2.py3-none-any.whl (45kB)
+    100% |████████████████████████████████| 51kB 8.3MB/s 
+Collecting requests-oauthlib>=0.5.0 (from msrest!=0.4.15->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/94/e7/c250d122992e1561690d9c0f7856dadb79d61fd4bdd0e598087dce607f6c/requests_oauthlib-1.0.0-py2.py3-none-any.whl
+Collecting keyring>=12.0.2 (from msrestazure<0.5,>=0.4.11->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/33/f4/0b90a69cd0d06e783d0b8b2951050839af7da2d3d153a5a7eaf605e9fb2c/keyring-13.1.0-py2.py3-none-any.whl
+Collecting adal<2.0.0,>=0.5.0 (from msrestazure<0.5,>=0.4.11->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/84/ae/4bb63179a2931201502f46f3e17d3a2e2833e6112e6173d6ca66b698c291/adal-1.0.1-py2.py3-none-any.whl (51kB)
+    100% |████████████████████████████████| 61kB 9.8MB/s 
+Collecting pycparser (from cffi>=1.7; platform_python_implementation != "PyPy"->cryptography->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/8c/2d/aad7f16146f4197a11f8e91fb81df177adcc2073d36a17b1491fd09df6ed/pycparser-2.18.tar.gz (245kB)
+    100% |████████████████████████████████| 256kB 3.7MB/s 
+Collecting monotonic; python_version == "2.6" or python_version == "2.7" or python_version == "3.0" or python_version == "3.1" or python_version == "3.2" (from humanfriendly>=4.7->azure-cli-core<3,>=2.0.12->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/ac/aa/063eca6a416f397bd99552c534c6d11d57f58f2e94c14780f3bbf818c4cf/monotonic-1.5-py2.py3-none-any.whl
+Collecting oauthlib>=0.6.2 (from requests-oauthlib>=0.5.0->msrest!=0.4.15->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/e6/d1/ddd9cfea3e736399b97ded5c2dd62d1322adef4a72d816f1ed1049d6a179/oauthlib-2.1.0-py2.py3-none-any.whl (121kB)
+    100% |████████████████████████████████| 122kB 6.8MB/s 
+Collecting entrypoints (from keyring>=12.0.2->msrestazure<0.5,>=0.4.11->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/cc/8b/4eefa9b47f1910b3d2081da67726b066e379b04ca897acfe9f92bac56147/entrypoints-0.2.3-py2.py3-none-any.whl
+Collecting secretstorage<3; (sys_platform == "linux2" or sys_platform == "linux") and python_version < "3.5" (from keyring>=12.0.2->msrestazure<0.5,>=0.4.11->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/a5/a5/0830cfe34a4cfd0d1c3c8b614ede1edb2aaf999091ac8548dd19cb352e79/SecretStorage-2.3.1.tar.gz
+Collecting configparser>=3.5; python_version == "2.7" (from entrypoints->keyring>=12.0.2->msrestazure<0.5,>=0.4.11->ansible[azure])
+  Downloading https://files.pythonhosted.org/packages/7c/69/c2ce7e91c89dc073eb1aa74c0621c3eefbffe8216b3f9af9d3885265c01c/configparser-3.5.0.tar.gz
+Building wheels for collected packages: ansible, PyYAML, MarkupSafe, tabulate, pycparser, secretstorage, configparser
+  Running setup.py bdist_wheel for ansible ... done
+  Stored in directory: /home/azureuser/.cache/pip/wheels/3c/99/fc/e9a65e79ddc32c3b956dccb2aa085dc2b7a52fb76112f6fe47
+  Running setup.py bdist_wheel for PyYAML ... done
+  Stored in directory: /home/azureuser/.cache/pip/wheels/03/05/65/bdc14f2c6e09e82ae3e0f13d021e1b6b2481437ea2f207df3f
+  Running setup.py bdist_wheel for MarkupSafe ... done
+  Stored in directory: /home/azureuser/.cache/pip/wheels/33/56/20/ebe49a5c612fffe1c5a632146b16596f9e64676768661e4e46
+  Running setup.py bdist_wheel for tabulate ... done
+  Stored in directory: /home/azureuser/.cache/pip/wheels/2a/85/33/2f6da85d5f10614cbe5a625eab3b3aebfdf43e7b857f25f829
+  Running setup.py bdist_wheel for pycparser ... done
+  Stored in directory: /home/azureuser/.cache/pip/wheels/c0/a1/27/5ba234bd77ea5a290cbf6d675259ec52293193467a12ef1f46
+  Running setup.py bdist_wheel for secretstorage ... done
+  Stored in directory: /home/azureuser/.cache/pip/wheels/4e/5b/1b/be8c8a830a0243af85b2946a0aece2c6743d7f7f946977ed67
+  Running setup.py bdist_wheel for configparser ... done
+  Stored in directory: /home/azureuser/.cache/pip/wheels/a3/61/79/424ef897a2f3b14684a7de5d89e8600b460b89663e6ce9d17c
+Successfully built ansible PyYAML MarkupSafe tabulate pycparser secretstorage configparser
+Installing collected packages: MarkupSafe, jinja2, PyYAML, pycparser, cffi, bcrypt, idna, enum34, ipaddress, asn1crypto, cryptography, pynacl, paramiko, pyparsing, packaging, azure-nspkg, azure-mgmt-nspkg, azure-common, certifi, typing, isodate, oauthlib, requests-oauthlib, msrest, configparser, entrypoints, secretstorage, keyring, PyJWT, adal, msrestazure, azure-mgmt-compute, azure-mgmt-network, azure-mgmt-storage, azure-mgmt-resource, azure-storage, azure-cli-nspkg, tabulate, argcomplete, pygments, pyopenssl, jmespath, colorama, knack, monotonic, humanfriendly, wheel, applicationinsights, azure-cli-core, azure-mgmt-dns, azure-mgmt-keyvault, azure-mgmt-batch, azure-mgmt-sql, azure-mgmt-web, azure-mgmt-containerservice, azure-mgmt-containerregistry, azure-mgmt-rdbms, azure-mgmt-containerinstance, ansible
+Exception:
+Traceback (most recent call last):
+  File "/usr/lib/python2.7/site-packages/pip/basecommand.py", line 215, in main
+    status = self.run(options, args)
+  File "/usr/lib/python2.7/site-packages/pip/commands/install.py", line 342, in run
+    prefix=options.prefix_path,
+  File "/usr/lib/python2.7/site-packages/pip/req/req_set.py", line 784, in install
+    **kwargs
+  File "/usr/lib/python2.7/site-packages/pip/req/req_install.py", line 851, in install
+    self.move_wheel_files(self.source_dir, root=root, prefix=prefix)
+  File "/usr/lib/python2.7/site-packages/pip/req/req_install.py", line 1064, in move_wheel_files
+    isolated=self.isolated,
+  File "/usr/lib/python2.7/site-packages/pip/wheel.py", line 345, in move_wheel_files
+    clobber(source, lib_dir, True)
+  File "/usr/lib/python2.7/site-packages/pip/wheel.py", line 316, in clobber
+    ensure_dir(destdir)
+  File "/usr/lib/python2.7/site-packages/pip/utils/__init__.py", line 83, in ensure_dir
+    os.makedirs(path)
+  File "/usr/lib64/python2.7/os.py", line 157, in makedirs
+    mkdir(name, mode)
+OSError: [Errno 13] Permission denied: '/usr/lib/python2.7/site-packages/markupsafe'
+You are using pip version 9.0.1, however version 10.0.1 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+
