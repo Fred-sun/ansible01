@@ -1,3 +1,64 @@
+ansible-playbook 1.yml 
+ [WARNING]: Unable to parse /etc/ansible/hosts as an inventory source
+
+ [WARNING]: No inventory was parsed, only implicit localhost is available
+
+ [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit
+localhost does not match 'all'
+
+
+PLAY [For Azure learn] *************************************************************************
+
+TASK [Gathering Facts] *************************************************************************
+ok: [localhost]
+
+TASK [create resource group] *******************************************************************
+changed: [localhost]
+
+TASK [create virtual network] ******************************************************************
+changed: [localhost]
+
+TASK [Add subnet] ******************************************************************************
+changed: [localhost]
+
+TASK [create public ip] ************************************************************************
+changed: [localhost]
+
+TASK [Create security group that allows SSH] ***************************************************
+changed: [localhost]
+
+TASK [Create NIC] ******************************************************************************
+[DEPRECATION WARNING]: Setting ip_configuration flatten is deprecated and will be removed. 
+Using ip_configurations list to define the ip configuration. This feature will be removed in 
+version 2.9. Deprecation warnings can be disabled by setting deprecation_warnings=False in 
+ansible.cfg.
+changed: [localhost]
+
+TASK [create virtual machine] ******************************************************************
+changed: [localhost]
+
+PLAY RECAP *************************************************************************************
+localhost                  : ok=8    changed=7    unreachable=0    failed=0   
+
+[azureuser@myVMsu ~]$ cat /etc/os-release 
+NAME="Red Hat Enterprise Linux Server"
+VERSION="7.3 (Maipo)"
+ID="rhel"
+ID_LIKE="fedora"
+VERSION_ID="7.3"
+PRETTY_NAME="Red Hat Enterprise Linux"
+ANSI_COLOR="0;31"
+CPE_NAME="cpe:/o:redhat:enterprise_linux:7.3:GA:server"
+HOME_URL="https://www.redhat.com/"
+BUG_REPORT_URL="https://bugzilla.redhat.com/"
+
+REDHAT_BUGZILLA_PRODUCT="Red Hat Enterprise Linux 7"
+REDHAT_BUGZILLA_PRODUCT_VERSION=7.3
+REDHAT_SUPPORT_PRODUCT="Red Hat Enterprise Linux"
+REDHAT_SUPPORT_PRODUCT_VERSION="7.3"
+
+
+
 p install ansible[azure]
 Collecting ansible[azure]
   Downloading https://files.pythonhosted.org/packages/93/53/925881db1049134679908698115752ad0b0fe95c82b3055a632476cd3687/ansible-2.5.5.tar.gz (10.2MB)
