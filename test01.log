@@ -1,0 +1,50 @@
+fred@fred-Virtual-Machine:~/task/41742$ ansible-playbook  test01.yml 
+
+PLAY [for SQL server test] *****************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [create resource groupo] **************************************************
+ok: [127.0.0.1]
+
+TASK [Creating a SQL server  fredsql001b] **************************************
+ [WARNING]: Azure API profile latest does not define an entry for
+SqlManagementClient
+
+ok: [127.0.0.1]
+
+TASK [dump create server log] **************************************************
+ok: [127.0.0.1] => {
+    "server_dump": {
+        "changed": false, 
+        "failed": false, 
+        "fully_qualified_domain_name": "fredsql001b.database.windows.net", 
+        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG01b/providers/Microsoft.Sql/servers/fredsql001b", 
+        "state": "Ready", 
+        "version": "12.0", 
+        "warnings": [
+            "Azure API profile latest does not define an entry for SqlManagementClient"
+        ]
+    }
+}
+
+TASK [Creating a SQL database  freddb001b] *************************************
+ok: [127.0.0.1]
+
+TASK [dump create db sql log] **************************************************
+ok: [127.0.0.1] => {
+    "db_dump": {
+        "changed": false, 
+        "database_id": "2dd7a242-1d4e-47b6-944a-d5c4ab8b6c26", 
+        "failed": false, 
+        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG01b/providers/Microsoft.Sql/servers/fredsql001b/databases/freddb001b", 
+        "status": "Online", 
+        "warnings": [
+            "Azure API profile latest does not define an entry for SqlManagementClient"
+        ]
+    }
+}
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=6    changed=0    unreachable=0    failed=0 

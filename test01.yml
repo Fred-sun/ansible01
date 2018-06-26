@@ -1,25 +1,40 @@
 ---
-# Resource_group and image has create before excute
-- name: For Azure learn
+- name: for SQL server test
   hosts: localhost
-  connection: local
   vars:
-    resource_group: myRG03
+    resource_group: myRG01b
+    sql_srv_name: fredsql001b
     location: westeurope
-    vm_name: myvm03
+    sql_admin_user: azureuser
+    sql_admin_password: Password@0329
+    sql_db_name: freddb001b
+    sql_edition: standard
   tasks:
+    - name: create resource groupo
+      azure_rm_resourcegroup:
+        name: "{{ resource_group }}"
+        location: "{{ location }}"
+    - name: "Creating a SQL server  {{ sql_srv_name }}"
+      azure_rm_sqlserver:
+        resource_group: "{{ resource_group }}"
+        name: "{{ sql_srv_name }}"
+        location: "{{ location }}"
+        admin_username: "{{ sql_admin_user }}"
+        admin_password: "{{ sql_admin_password }}"
+      register: server_dump
+    - name: dump create server log
+      debug: 
+        var: server_dump
 
-  - include: loop_test01.yml
-    with_items:
-      - 0
-      - 1
-      - 2
-      - 3
-      - 4
-      - 5
-      - 6
-      - 7
-      - 8
-      - 9
-
+    - name: "Creating a SQL database  {{ sql_db_name }}"
+      azure_rm_sqldatabase:
+        resource_group: "{{ resource_group }}"
+        server_name: "{{ sql_srv_name }}"
+        name: "{{ sql_db_name }}"
+        location: "{{ location }}"
+        edition: "{{ sql_edition }}"
+      register: db_dump
+    - name: dump create db sql log
+      debug:
+        var: db_dump
 
