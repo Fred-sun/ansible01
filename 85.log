@@ -1,0 +1,93 @@
+Y [For test 85] *************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [127.0.0.1]
+
+TASK [create resource group] ***************************************************
+ok: [127.0.0.1]
+
+TASK [create virtual network] **************************************************
+ok: [127.0.0.1]
+
+TASK [Add subnet] **************************************************************
+ok: [127.0.0.1]
+
+TASK [create public ip] ********************************************************
+ok: [127.0.0.1]
+
+TASK [Create security group that allows SSH] ***********************************
+ok: [127.0.0.1]
+
+TASK [Create NIC] **************************************************************
+ok: [127.0.0.1]
+
+TASK [dump nic data] ***********************************************************
+ok: [127.0.0.1] => {
+    "nic_dump": {
+        "changed": false, 
+        "failed": false, 
+        "state": {
+            "dns_settings": {
+                "applied_dns_servers": [], 
+                "dns_servers": [], 
+                "internal_dns_name_label": null, 
+                "internal_fqdn": null
+            }, 
+            "enable_ip_forwarding": false, 
+            "etag": "W/\"636ecf84-ec44-42af-8e79-b8ba8c915738\"", 
+            "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/networkInterfaces/test_nic", 
+            "ip_configuration": {
+                "name": "primary", 
+                "primary": true, 
+                "private_ip_address": "172.16.1.42", 
+                "private_ip_allocation_method": "Static", 
+                "public_ip_address": null, 
+                "subnet": {
+                    "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/virtualnetwork/subnets/subnet", 
+                    "name": "subnet", 
+                    "resource_group": "myRG", 
+                    "virtual_network_name": "virtualnetwork"
+                }
+            }, 
+            "ip_configurations": [
+                {
+                    "name": "primary", 
+                    "primary": true, 
+                    "private_ip_address": "172.16.1.42", 
+                    "private_ip_allocation_method": "Static", 
+                    "public_ip_address": null, 
+                    "subnet": {
+                        "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/virtualNetworks/virtualnetwork/subnets/subnet", 
+                        "name": "subnet", 
+                        "resource_group": "myRG", 
+                        "virtual_network_name": "virtualnetwork"
+                    }
+                }
+            ], 
+            "location": "westeurope", 
+            "mac_address": null, 
+            "name": "test_nic", 
+            "network_security_group": {
+                "id": "/subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/myRG/providers/Microsoft.Network/networkSecurityGroups/security_ssh", 
+                "name": "security_ssh"
+            }, 
+            "provisioning_state": "Succeeded", 
+            "tags": {}, 
+            "type": "Microsoft.Network/networkInterfaces"
+        }
+    }
+}
+
+PLAY RECAP *********************************************************************
+127.0.0.1                  : ok=8    changed=0    unreachable=0    failed=0   
+
+fred@fred-Virtual-Machine:~/task/85$ 
+fred@fred-Virtual-Machine:~/task/85$ ansible --version
+ansible 2.5.5
+  config file = /etc/ansible/ansible.cfg
+  configured module search path = [u'/home/fred/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/local/lib/python2.7/dist-packages/ansible
+  executable location = /usr/local/bin/ansible
+  python version = 2.7.12 (default, Dec  4 2017, 14:50:18) [GCC 5.4.0 20160609]
+fred@fred-Virtual-Machine:~/task/85$ 
+
