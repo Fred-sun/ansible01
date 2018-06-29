@@ -1,0 +1,25 @@
+t
+ 2001  az group create --resource-group ansible-inventory-test-rg --location eastus
+ 2002  az vm create --resource-group ansible-inventory-test-rg              --name ansible-inventory-test-vm1              --image UbuntuLTS --generate-ssh-keys
+ 2003  az vm create --resource-group ansible-inventory-test-rg --name ansible-inventory-test-vm1 --image UbuntuLT  --generate-ssh-keys
+ 2004  az vm create --resource-group ansible-inventory-test-rg --name ansible-inventory-test-vm1 --image UbuntuLTS  --generate-ssh-keys
+ 2005  az vm create --resource-group ansible-inventory-test-rg --name ansible-inventory-test-vm2 --image UbuntuLTS  --generate-ssh-keys
+ 2006  az resource tag --tags nginx --id /subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+ 2007  wget https://raw.githubusercontent.com/ansible/ansible/devel/contrib/inventory/azure_rm.py
+ 2008  chmod +x azure_rm.py
+ 2009  ansible -i azure_rm.py ansible-inventory-test-rg -m ping
+ 2010  export AZURE_TAGS=nginx
+ 2011  ansible -i azure_rm.py ansible-inventory-test-rg -m ping
+ 2012  vi nginx.yml
+ 2013  ansible-playbook nginx.yml 
+ 2014  vi 0629.yml
+ 2015  sync
+ 2016  vi 0629.yml
+ 2017  vi nginx.yml 
+ 2018  ansible-playbook  nginx.yml 
+ 2019  ansible-playbook -i azure_rm.py nginx.yml 
+ 2020  ssh `az vm list-ip-addresses \
+-n ansible-inventory-test-vm1 \
+ 2021  ssh `az vm list-ip-addresses -n ansible-inventory-test-vm1 --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
+ 2022  ssh `az vm list-ip-addresses -n ansible-inventory-test-vm2 --query [0].virtualMachine.network.publicIpAddresses[0].ipAddress -o tsv`
+

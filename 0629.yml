@@ -1,0 +1,22 @@
+[ERROR]: No handlers could be found for logger
+"msrestazure.azure_active_directory"
+
+ansible-inventory-test-vm2 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+ansible-inventory-test-vm1 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+fred@fred-Virtual-Machine:~$ export AZURE_TAGS=nginx
+fred@fred-Virtual-Machine:~$ ansible -i azure_rm.py ansible-inventory-test-rg -m ping
+ [ERROR]: No handlers could be found for logger
+"msrestazure.azure_active_directory"
+
+ansible-inventory-test-vm1 | SUCCESS => {
+    "changed": false, 
+    "ping": "pong"
+}
+fred@fred-Virtual-Machine:~$ vi nginx.yml
+
