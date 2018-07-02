@@ -1,0 +1,17 @@
+sh_history              .cache/                    .sudo_as_admin_successful
+root@myVM01:/home/azureuser# ansible-playbook main.yml --extra-vars "{\"test\":\"task.yml\",\"resource_group\":\"ansible-aks-test04\"}"
+ [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit
+localhost does not match 'all'
+
+
+PLAY [localhost] *****************************************************************************
+
+TASK [Gathering Facts] ***********************************************************************
+ok: [localhost]
+
+TASK [create resource group] *****************************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "From cffi callback <function _verify_callback at 0x7fb59b077140>:\nTraceback (most recent call last):\n  File \"/usr/local/lib/python2.7/dist-packages/OpenSSL/SSL.py\", line 309, in wrapper\n    _lib.X509_up_ref(x509)\nAttributeError: 'module' object has no attribute 'X509_up_ref'\nTraceback (most recent call last):\n  File \"/tmp/ansible_f5OoBI/ansible_module_azure_rm_resourcegroup.py\", line 255, in <module>\n    main()\n  File \"/tmp/ansible_f5OoBI/ansible_module_azure_rm_resourcegroup.py\", line 252, in main\n    AzureRMResourceGroup()\n  File \"/tmp/ansible_f5OoBI/ansible_module_azure_rm_resourcegroup.py\", line 136, in __init__\n    supports_tags=True)\n  File \"/tmp/ansible_f5OoBI/ansible_modlib.zip/ansible/module_utils/azure_rm_common.py\", line 348, in __init__\n  File \"/usr/local/lib/python2.7/dist-packages/msrestazure/azure_active_directory.py\", line 453, in __init__\n    self.set_token()\n  File \"/usr/local/lib/python2.7/dist-packages/msrestazure/azure_active_directory.py\", line 480, in set_token\n    raise_with_traceback(AuthenticationError, \"\", err)\n  File \"/usr/local/lib/python2.7/dist-packages/msrest/exceptions.py\", line 48, in raise_with_traceback\n    raise error\nmsrest.exceptions.AuthenticationError: , SSLError: HTTPSConnectionPool(host='login.microsoftonline.com', port=443): Max retries exceeded with url: /72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token (Caused by SSLError(SSLError(\"bad handshake: Error([('SSL routines', 'ssl3_get_server_certificate', 'certificate verify failed')],)\",),))\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 1}
+	to retry, use: --limit @/home/azureuser/main.retry
+
+PLAY RECAP ***********************************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=1

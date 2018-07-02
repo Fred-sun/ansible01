@@ -1,0 +1,43 @@
+
+t@myVM03:/home/azureuser# ansible-playbook main.yml --extra-vars "{\"test\":\"task.yml\",\"resource_group\":\"ansible-aks-test05\"}"
+ [WARNING]: Unable to parse /etc/ansible/hosts as an inventory source
+
+ [WARNING]: No inventory was parsed, only implicit localhost is available
+
+ [WARNING]: provided hosts list is empty, only localhost is available. Note
+that the implicit localhost does not match 'all'
+
+
+PLAY [localhost] ***************************************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [localhost]
+
+TASK [create resource group] ***************************************************
+Please set a password for your new keyring: 
+Please confirm the password: 
+changed: [localhost]
+
+TASK [include_tasks] ***********************************************************
+included: /home/azureuser/task.yml for localhost
+
+TASK [Create an AKS instance (check mode)] *************************************
+Please enter password for encrypted keyring: 
+ [WARNING]: Azure API profile latest does not define an entry for
+ContainerServiceClient
+
+changed: [localhost]
+
+TASK [Check there is no AKS created] *******************************************
+Please enter password for encrypted keyring: 
+ok: [localhost]
+
+TASK [Check there is no AKS created] *******************************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Create an AKS instance] **************************************************
+Please enter password for encrypted keyring: 
+

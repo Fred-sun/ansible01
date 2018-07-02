@@ -1,0 +1,37 @@
+
+t@myVM02:/home/azureuser# ansible-playbook main.yml --extra-vars "{\"test\":\"task.yml\",\"resource_group\":\"ansible-aks-test01\"}"
+ [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit
+localhost does not match 'all'
+
+
+PLAY [localhost] *********************************************************************************
+
+TASK [Gathering Facts] ***************************************************************************
+ok: [localhost]
+
+TASK [create resource group] *********************************************************************
+changed: [localhost]
+
+TASK [include_tasks] *****************************************************************************
+included: /home/azureuser/task.yml for localhost
+
+TASK [Create an AKS instance (check mode)] *******************************************************
+ [WARNING]: Azure API profile latest does not define an entry for ContainerServiceClient
+
+changed: [localhost]
+
+TASK [Check there is no AKS created] *************************************************************
+ok: [localhost]
+
+TASK [Check there is no AKS created] *************************************************************
+ok: [localhost] => {
+    "changed": false, 
+    "msg": "All assertions passed"
+}
+
+TASK [Create an AKS instance] ********************************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "module_stderr": "No handlers could be found for logger \"msrestazure.azure_active_directory\"\nTraceback (most recent call last):\n  File \"/tmp/ansible_Wf2ID3/ansible_module_azure_rm_aks.py\", line 605, in <module>\n    main()\n  File \"/tmp/ansible_Wf2ID3/ansible_module_azure_rm_aks.py\", line 601, in main\n    AzureRMManagedCluster()\n  File \"/tmp/ansible_Wf2ID3/ansible_module_azure_rm_aks.py\", line 398, in __init__\n    required_if=required_if)\n  File \"/tmp/ansible_Wf2ID3/ansible_modlib.zip/ansible/module_utils/azure_rm_common.py\", line 384, in __init__\n  File \"/tmp/ansible_Wf2ID3/ansible_module_azure_rm_aks.py\", line 491, in exec_module\n    self.results = self.create_update_aks()\n  File \"/tmp/ansible_Wf2ID3/ansible_module_azure_rm_aks.py\", line 545, in create_update_aks\n    response = self.get_poller_result(poller)\n  File \"/tmp/ansible_Wf2ID3/ansible_modlib.zip/ansible/module_utils/azure_rm_common.py\", line 701, in get_poller_result\n  File \"/usr/local/lib/python2.7/dist-packages/msrestazure/azure_operation.py\", line 511, in wait\n    raise self._exception\nmsrest.exceptions.ClientRequestError: Error occurred in request., RetryError: HTTPSConnectionPool(host='management.azure.com', port=443): Max retries exceeded with url: /subscriptions/2085065b-00f8-4cba-9675-ba15f4d4ab66/providers/Microsoft.ContainerService/locations/eastus/operations/847a44cc-85e2-4338-9f5b-f0d66b140421?api-version=2017-08-31 (Caused by ResponseError('too many 503 error responses',))\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 1}
+	to retry, use: --limit @/home/azureuser/main.retry
+
+PLAY RECAP ***************************************************************************************
+localhost                  : ok=6    changed=2    unreachable=0    failed=1
