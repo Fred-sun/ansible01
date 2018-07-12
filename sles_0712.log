@@ -1,0 +1,7 @@
+
+TASK [create resource group] ***************************************************
+fatal: [localhost]: FAILED! => {"changed": false, "msg": "Do you have azure>=2.0.0 installed? Try `pip install ansible[azure]`- No module named azure.common.credentials"}
+	to retry, use: --limit @/home/azureuser/1.retry
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=1    changed=0    unreachable=0    failed=1
