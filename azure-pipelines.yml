@@ -1,0 +1,32 @@
+trigger:
+- master
+pool:
+  vmImage: 'windows-latest'
+steps:
+- task: CredScan@2
+  inputs:
+    toolMajorVersion: 'V2'
+    outputFormat: 'csv'
+    searchersFileType: 'Default'
+- task: SdtReport@1
+  inputs:
+    TsvFile: false
+    AllTools: false
+    BinSkim: false
+    CredScan: true
+    MSRD: false
+    RoslynAnalyzers: false
+    TSLint: false
+    ToolLogsNotFoundAction: 'Standard'
+- task: PublishSecurityAnalysisLogs@2
+  inputs:
+    ArtifactName: 'CodeAnalysisLogs'
+    ArtifactType: 'Container'
+    AllTools: false
+    AntiMalware: false
+    BinSkim: false
+    CredScan: true
+    MSRD: false
+    RoslynAnalyzers: false
+    TSLint: false
+    ToolLogsNotFoundAction: 'Standard'
